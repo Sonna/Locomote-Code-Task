@@ -49,3 +49,53 @@ current project.
     $ git remote add origin https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git
     $ git push -u origin master
 ```
+
+Initialize the Node project using NPM
+
+```console
+    $ npm init
+
+    This utility will walk you through creating a package.json file.
+    It only covers the most common items, and tries to guess sensible defaults.
+
+    See `npm help json` for definitive documentation on these fields
+    and exactly what they do.
+
+    Use `npm install <pkg> --save` afterwards to install a package and
+    save it as a dependency in the package.json file.
+
+    Press ^C at any time to quit.
+    name: (locomotive_code_task)
+    version: (1.0.0)
+    description: A Flight Search interface for the Locomotive code task.
+    entry point: (index.js)
+    test command:
+    git repository: (https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git)
+    keywords:
+    author: Alex Sonneveld <alex@sonneveld.com.au>
+    license: (ISC)
+    About to write to /Users/Sonna/Projects/javascript/locomotive_code_task/package.json:
+
+    {
+      "name": "locomotive_code_task",
+      "version": "1.0.0",
+      "description": "A Flight Search interface for the Locomotive code task.",
+      "main": "index.js",
+      "directories": {
+        "doc": "doc"
+      },
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "git+https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git"
+      },
+      "author": "Alex Sonneveld <alex@sonneveld.com.au>",
+      "license": "ISC",
+      "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme"
+    }
+
+
+    Is this ok? (yes)
+```
