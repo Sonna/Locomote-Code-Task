@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme",
   "devDependencies": {
-    "jasmine-node": "^1.14.5"
+    "jasmine": "^2.6.0"
   },
   "dependencies": {
     "express": "^4.15.3",

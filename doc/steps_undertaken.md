@@ -100,37 +100,70 @@ Initialize the Node project using NPM
     Is this ok? (yes)
 ```
 
-Install Jasmine-Node for Behaviour Driven Development (BDD) test environment /
+Install Jasmine for Behaviour Driven Development (BDD) test environment /
 workflow
 
 ```console
     $ npm install jasmine-node --save-dev
 
-    npm WARN deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
-    npm WARN deprecated minimatch@0.3.0: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
-    npm WARN prefer global jasmine-node@1.14.5 should be installed with -g
     locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
-    └─┬ jasmine-node@1.14.5
-      ├── coffee-script@1.12.6
-      ├─┬ gaze@0.3.4
-      │ ├─┬ fileset@0.1.8
-      │ │ └─┬ glob@3.2.11
-      │ │   ├── inherits@2.0.3
-      │ │   └── minimatch@0.3.0
-      │ └─┬ minimatch@0.2.14
-      │   ├── lru-cache@2.7.3
-      │   └── sigmund@1.0.1
-      ├─┬ jasmine-growl-reporter@0.0.3
-      │ └── growl@1.7.0
-      ├── jasmine-reporters@1.0.2
-      ├── mkdirp@0.3.5
-      ├── requirejs@2.3.3
-      ├── underscore@1.8.3
-      └── walkdir@0.0.11
+    └─┬ jasmine@2.6.0
+      ├── exit@0.1.2
+      ├─┬ glob@7.1.2
+      │ ├── fs.realpath@1.0.0
+      │ ├─┬ inflight@1.0.6
+      │ │ └── wrappy@1.0.2
+      │ ├─┬ minimatch@3.0.4
+      │ │ └─┬ brace-expansion@1.1.7
+      │ │   ├── balanced-match@0.4.2
+      │ │   └── concat-map@0.0.1
+      │ ├── once@1.4.0
+      │ └── path-is-absolute@1.0.1
+      └── jasmine-core@2.6.2
+```
 
+Initialize Jasmine specification tests directory `spec/` and configuration
+
+```console
+    $ ./node_modules/.bin/jasmine init
+```
+
+Update `package.json` to use Jasmine for tests and when using the Node Test
+command `npm test`
+
+```diff
+diff --git i/package.json w/package.json
+index 39b6555..a3d0e4d 100644
+--- i/package.json
++++ w/package.json
+@@ -7,7 +7,7 @@
+     "doc": "doc"
+   },
+   "scripts": {
+-    "test": "echo \"Error: no test specified\" && exit 1"
++    "test": "jasmine"
+   },
+   "repository": {
+     "type": "git",
+```
+
+Ensure that the test runner is setup correctly and run without tests
+
+```console
+    $ npm test
+
+    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > jasmine
+
+    Started
+
+
+    No specs found
+    Finished in 0.003 seconds
 ```
 
 **References:**
+- [Getting Started](https://jasmine.github.io/pages/getting_started.html)
 - [mhevery/jasmine-node: Integration of Jasmine Spec framework with Node.js](https://github.com/mhevery/jasmine-node)
 
 Note:
