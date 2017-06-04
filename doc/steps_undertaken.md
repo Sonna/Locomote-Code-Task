@@ -350,3 +350,34 @@ Run all tests to ensure they work
     1 spec, 0 failures
     Finished in 0.04 seconds
 ```
+
+Add a simple stylesheet to serve as an additional static file from the server
+and to later use to style the front-end of the application
+
+```css
+/* assets/stylesheets/application.css */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font: 13px Helvetica, Arial; }
+form { padding: 3px; }
+form label { margin: 10px; }
+form input { margin: 10px; padding: 10px; }
+```
+
+Update the `public/index.html` to reference the application stylesheet
+
+```diff
+diff --git i/public/index.html w/public/index.html
+index e12e110..5fa1f71 100644
+--- i/public/index.html
++++ w/public/index.html
+@@ -2,6 +2,7 @@
+ <html>
+ <head>
+   <title>JS code task</title>
++  <link rel="stylesheet" href="assets/stylesheets/application.css">
+ </head>
+ <body>
+ </body>
+```
+
+Add the approrpriate test to ensure the asset URL can be reached and responds.
