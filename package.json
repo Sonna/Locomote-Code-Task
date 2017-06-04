@@ -18,5 +18,8 @@
   "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme",
   "devDependencies": {
     "jasmine-node": "^1.14.5"
+  },
+  "dependencies": {
+    "request": "^2.81.0"
   }
 }

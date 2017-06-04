@@ -105,6 +105,7 @@ workflow
 
 ```console
     $ npm install jasmine-node --save-dev
+
     npm WARN deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
     npm WARN deprecated minimatch@0.3.0: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
     npm WARN prefer global jasmine-node@1.14.5 should be installed with -g
@@ -141,3 +142,65 @@ Note:
 
 Update the README to explain how to use this project and set it up with its
 dependencies (this could be assumed, but should be thorough rather than assume).
+
+Add Request Node library to handle requests against our application during tests
+and the external Locomotive API.
+
+```console
+    $ npm install request --save
+
+    └─┬ request@2.81.0
+      ├── aws-sign2@0.6.0
+      ├── aws4@1.6.0
+      ├── caseless@0.12.0
+      ├─┬ combined-stream@1.0.5
+      │ └── delayed-stream@1.0.0
+      ├── extend@3.0.1
+      ├── forever-agent@0.6.1
+      ├─┬ form-data@2.1.4
+      │ └── asynckit@0.4.0
+      ├─┬ har-validator@4.2.1
+      │ ├─┬ ajv@4.11.8
+      │ │ ├── co@4.6.0
+      │ │ └─┬ json-stable-stringify@1.0.1
+      │ │   └── jsonify@0.0.0
+      │ └── har-schema@1.0.5
+      ├─┬ hawk@3.1.3
+      │ ├── boom@2.10.1
+      │ ├── cryptiles@2.0.5
+      │ ├── hoek@2.16.3
+      │ └── sntp@1.0.9
+      ├─┬ http-signature@1.1.1
+      │ ├── assert-plus@0.2.0
+      │ ├─┬ jsprim@1.4.0
+      │ │ ├── assert-plus@1.0.0
+      │ │ ├── extsprintf@1.0.2
+      │ │ ├── json-schema@0.2.3
+      │ │ └── verror@1.3.6
+      │ └─┬ sshpk@1.13.0
+      │   ├── asn1@0.2.3
+      │   ├── assert-plus@1.0.0
+      │   ├── bcrypt-pbkdf@1.0.1
+      │   ├─┬ dashdash@1.14.1
+      │   │ └── assert-plus@1.0.0
+      │   ├── ecc-jsbn@0.1.1
+      │   ├─┬ getpass@0.1.7
+      │   │ └── assert-plus@1.0.0
+      │   ├── jodid25519@1.0.2
+      │   ├── jsbn@0.1.1
+      │   └── tweetnacl@0.14.5
+      ├── is-typedarray@1.0.0
+      ├── isstream@0.1.2
+      ├── json-stringify-safe@5.0.1
+      ├─┬ mime-types@2.1.15
+      │ └── mime-db@1.27.0
+      ├── oauth-sign@0.8.2
+      ├── performance-now@0.2.0
+      ├── qs@6.4.0
+      ├── safe-buffer@5.1.0
+      ├── stringstream@0.0.5
+      ├─┬ tough-cookie@2.3.2
+      │ └── punycode@1.4.1
+      ├── tunnel-agent@0.6.0
+      └── uuid@3.0.1
+```
