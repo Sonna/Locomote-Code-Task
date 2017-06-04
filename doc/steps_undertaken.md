@@ -204,3 +204,51 @@ and the external Locomotive API.
       ├── tunnel-agent@0.6.0
       └── uuid@3.0.1
 ```
+
+Add the Express Node library as a project dependency to use later as the
+application back-end server for serving the required `/airlines`, `/airports`
+and `/search` endpoints.
+
+```
+    $ npm install express --save
+
+    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    └─┬ express@4.15.3
+      ├─┬ accepts@1.3.3
+      │ └── negotiator@0.6.1
+      ├── array-flatten@1.1.1
+      ├── content-disposition@0.5.2
+      ├── content-type@1.0.2
+      ├── cookie@0.3.1
+      ├── cookie-signature@1.0.6
+      ├─┬ debug@2.6.7
+      │ └── ms@2.0.0
+      ├── depd@1.1.0
+      ├── encodeurl@1.0.1
+      ├── escape-html@1.0.3
+      ├── etag@1.8.0
+      ├─┬ finalhandler@1.0.3
+      │ └── unpipe@1.0.0
+      ├── fresh@0.5.0
+      ├── merge-descriptors@1.0.1
+      ├── methods@1.1.2
+      ├─┬ on-finished@2.3.0
+      │ └── ee-first@1.1.1
+      ├── parseurl@1.3.1
+      ├── path-to-regexp@0.1.7
+      ├─┬ proxy-addr@1.1.4
+      │ ├── forwarded@0.1.0
+      │ └── ipaddr.js@1.3.0
+      ├── range-parser@1.2.0
+      ├─┬ send@0.15.3
+      │ ├── destroy@1.0.4
+      │ ├── http-errors@1.6.1
+      │ └── mime@1.3.4
+      ├── serve-static@1.12.3
+      ├── setprototypeof@1.0.3
+      ├── statuses@1.3.1
+      ├─┬ type-is@1.6.15
+      │ └── media-typer@0.3.0
+      ├── utils-merge@1.0.0
+      └── vary@1.1.1
+```
