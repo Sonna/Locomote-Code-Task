@@ -15,5 +15,8 @@
   },
   "author": "Alex Sonneveld <alex@sonneveld.com.au>",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme"
+  "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
 }

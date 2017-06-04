@@ -99,3 +99,45 @@ Initialize the Node project using NPM
 
     Is this ok? (yes)
 ```
+
+Install Jasmine-Node for Behaviour Driven Development (BDD) test environment /
+workflow
+
+```console
+    $ npm install jasmine-node --save-dev
+    npm WARN deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+    npm WARN deprecated minimatch@0.3.0: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+    npm WARN prefer global jasmine-node@1.14.5 should be installed with -g
+    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    └─┬ jasmine-node@1.14.5
+      ├── coffee-script@1.12.6
+      ├─┬ gaze@0.3.4
+      │ ├─┬ fileset@0.1.8
+      │ │ └─┬ glob@3.2.11
+      │ │   ├── inherits@2.0.3
+      │ │   └── minimatch@0.3.0
+      │ └─┬ minimatch@0.2.14
+      │   ├── lru-cache@2.7.3
+      │   └── sigmund@1.0.1
+      ├─┬ jasmine-growl-reporter@0.0.3
+      │ └── growl@1.7.0
+      ├── jasmine-reporters@1.0.2
+      ├── mkdirp@0.3.5
+      ├── requirejs@2.3.3
+      ├── underscore@1.8.3
+      └── walkdir@0.0.11
+
+```
+
+**References:**
+- [mhevery/jasmine-node: Integration of Jasmine Spec framework with Node.js](https://github.com/mhevery/jasmine-node)
+
+Note:
+  Update `.gitignore` file to ignore the `node_modules/` directory
+
+  ```console
+    $ echo 'node_modules/' >> .gitignore
+  ```
+
+Update the README to explain how to use this project and set it up with its
+dependencies (this could be assumed, but should be thorough rather than assume).

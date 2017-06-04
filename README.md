@@ -1,5 +1,16 @@
 # JS code task
 
+## Usage
+
+[Install Node][Install Node] and its dependencies, to setup project:
+
+```console
+  $ npm install
+```
+
+<!-- References -->
+[Install Node]: https://nodejs.org/en/download/ "Download | Node.js"
+
 ## Front end (part 1)
 
 You are building a flight search interface.
