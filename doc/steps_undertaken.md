@@ -380,4 +380,99 @@ index e12e110..5fa1f71 100644
  </body>
 ```
 
-Add the approrpriate test to ensure the asset URL can be reached and responds.
+Add the appropriate test to ensure the asset URL can be reached and responds.
+
+Add the appropriate test for `/airlines` endpoint on the `app` server
+
+```javascript
+const url = require('url');
+
+const baseURL = 'http://localhost:3000/';
+const airlinesURL = url.resolve(baseURL, 'airlines');
+
+// ...
+
+  describe('GET /airlines', function() {
+    it('returns status code 200', function(done) {
+      request.get(airlinesURL, function(error, response, body) {
+        expect(response.statusCode).toBe(200);
+        done();
+      });
+    });
+
+    it('returns an array of values', function(done) {
+      request.get(airlinesURL, function(error, response, body) {
+        let data = JSON.parse(response.body);
+        expect(data).toEqual([]);
+        done();
+      });
+    });
+  });
+```
+
+Esnure it fails
+
+```console
+    $ npm test
+
+    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > jasmine
+
+    Started
+    .F.
+
+    Failures:
+    1) Application Server GET /airlines returns status code 200
+      Message:
+        Expected 404 to be 200.
+      Stack:
+        Error: Expected 404 to be 200.
+            at Request._callback (/Users/Sonna/Projects/javascript/locomotive_code_task/spec/serverSpec.js:22:37)
+            at Request.self.callback (/Users/Sonna/Projects/javascript/locomotive_code_task/node_modules/request/request.js:188:22)
+            at emitTwo (events.js:106:13)
+            at Request.emit (events.js:191:7)
+
+    3 specs, 1 failure
+    Finished in 0.062 seconds
+
+    npm ERR! Test failed.  See above for more details.
+```
+
+Then add it to the application `server.js`
+
+```javascript
+// Lists all available airlines from the Flight API.
+app.get('/airlines', function (req, res) {
+  var airlines = [];
+  res.send(200, airlines);
+})
+
+```
+
+Run tests to ensure it passes
+
+```console
+    npm test
+
+    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > jasmine
+
+    Started
+    .express deprecated res.send(status, body): Use res.status(status).send(body) instead server.js:9:7
+    ..
+
+
+    3 specs, 0 failures
+    Finished in 0.057 seconds
+```
+
+Fix the deprecation warning and continue
+
+```javascript
+// Lists all available airlines from the Flight API.
+app.get('/airlines', function (req, res) {
+  var airlines = [];
+  res.status(200).send(airlines);
+})
+
+```
