@@ -285,3 +285,68 @@ and `/search` endpoints.
       ├── utils-merge@1.0.0
       └── vary@1.1.1
 ```
+
+Setup an ExpressJS server application to serve up an `index.html` page from the
+root path `/` on port `3000`; e.g. `http://localhost:3000/`
+
+```javascript
+// server.js
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+app.listen(3000);
+```
+
+And create the initial `index.html` page to serve within the `public` directory;
+e.g.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS code task</title>
+</head>
+<body>
+</body>
+</html>
+```
+
+Add a simple test to enure that the static files are being served by the Express
+application server and that tests can find the application correctly:
+
+```javascript
+// serverSpec.js
+var request = require('request');
+var server = require('../server.js');
+
+var baseURL = 'http://localhost:3000/'
+
+describe('Application Server', function() {
+  describe('GET /', function() {
+    it('returns status code 200', function(done) {
+      request.get(baseURL, function(error, response, body) {
+        expect(response.statusCode).toBe(200);
+        done();
+      });
+    });
+  });
+});
+```
+
+Run all tests to ensure they work
+
+```console
+    $ npm test
+
+    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > jasmine
+
+    Started
+    .
+
+
+    1 spec, 0 failures
+    Finished in 0.04 seconds
+```

@@ -2,7 +2,7 @@
   "name": "locomotive_code_task",
   "version": "1.0.0",
   "description": "A Flight Search interface for the Locomotive code task.",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "doc": "doc"
   },
