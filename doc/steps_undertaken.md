@@ -42,3 +42,10 @@ NOTE:
   **References:**
   - [nodenv/nodenv: Manage multiple NodeJS versions.](https://github.com/nodenv/nodenv#homebrew-on-mac-os-x)
 
+Setup a remote Git repository to backup project files, and added it to the
+current project.
+
+```console
+    $ git remote add origin https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git
+    $ git push -u origin master
+```
