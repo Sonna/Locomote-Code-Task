@@ -595,3 +595,36 @@ app.get('/airlines', function (req, res) {
   });
 })
 ```
+
+_Then refactor the Flght API class to be configurable:_
+
+```javascript
+// diff --git i/lib/services/FlightAPI.js w/lib/services/FlightAPI.js
+const request = require('request');
+const url = require('url');
+
+// function FlightAPI() {};
+FlightAPI.prototype.properties = {
+  baseURL: 'http://node.locomote.com/code-task/',
+  airlinesPath: 'airlines'
+};
+
+function FlightAPI(options) {
+  this.properties = Object.assign({}, this.properties, options);
+};
+
+FlightAPI.prototype.airlines = function (callback) {
+  // request.get('http://node.locomote.com/code-task/airlines', function(error, response, body) {
+  request.get(this.airlinesURL(), function (error, response, body) {
+    let parsed = JSON.parse(body);
+    callback(response.statusCode, parsed);
+  });
+};
+
+FlightAPI.prototype.airlinesURL = function () {
+  return url.resolve(this.properties.baseURL, this.properties.airlinesPath);
+}
+
+module.exports = FlightAPI;
+
+```

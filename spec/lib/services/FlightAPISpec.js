@@ -4,6 +4,50 @@ const request = require('request');
 const describedClass = require('../../../lib/services/FlightAPI');
 
 describe('FlightAPI library', function () {
+  describe('default properties', function () {
+    let subject = new describedClass();
+
+    it('baseURL', function (done) {
+      expect(subject.properties.baseURL).toEqual('http://node.locomote.com/code-task/');
+      done();
+    });
+
+    it('airlinesPath', function (done) {
+      expect(subject.properties.airlinesPath).toEqual('airlines');
+      done();
+    });
+
+    it('airlinesURL', function (done) {
+      expect(subject.airlinesURL()).toEqual('http://node.locomote.com/code-task/airlines');
+      done();
+    });
+  });
+
+  describe('default properties', function () {
+    const baseURL = 'https://example.com/';
+    const airlinesPath = 'air_lines';
+
+    let subject = new describedClass({
+      baseURL: 'https://example.com/',
+      airlinesPath: 'air_lines'
+    });
+
+    it('baseURL', function (done) {
+      expect(subject.properties.baseURL).toEqual('https://example.com/');
+      done();
+    });
+
+    it('airlinesPath', function (done) {
+      expect(subject.properties.airlinesPath).toEqual('air_lines');
+      done();
+    });
+
+    it('airlinesURL', function (done) {
+      expect(subject.airlinesURL()).toEqual('https://example.com/air_lines');
+      done();
+    });
+  });
+
   describe('airlines', function () {
     beforeEach(function () {
       const airlinesData = [
