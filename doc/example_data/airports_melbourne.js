@@ -25,3 +25,31 @@
     timeZone: "Australia/Hobart"
   }
 ];
+
+// http://node.locomote.com/code-task/airports?q=Sydney
+[
+  {
+    airportCode: "SYD",
+    airportName: "Kingsford Smith",
+    cityCode: "SYD",
+    cityName: "Sydney",
+    countryCode: "AU",
+    countryName: "Australia",
+    latitude: -33.946111,
+    longitude: 151.177222,
+    stateCode: "NS",
+    timeZone: "Australia/Sydney"
+  },
+  {
+    airportCode: "YQY",
+    airportName: "Sydney Airport",
+    cityCode: "YQY",
+    cityName: "Sydney",
+    countryCode: "CA",
+    countryName: "Canada",
+    latitude: 46.161388,
+    longitude: -60.047779,
+    stateCode: "NS",
+    timeZone: "America/Halifax"
+  }
+];
