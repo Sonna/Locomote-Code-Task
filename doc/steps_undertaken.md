@@ -476,3 +476,122 @@ app.get('/airlines', function (req, res) {
 })
 
 ```
+
+Begin building a Flight API object to consume external URL requests from the
+Locomotive Code Task application and to keep it separate from the application
+server main body / routing code.
+
+Install Nock Node library as another development / test dependency to Mock the
+external HTTP Requests, for the purpose of the making external Flight API calls.
+
+```console
+    $ npm install --save-dev nock
+
+    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    └─┬ nock@9.0.13
+      ├─┬ chai@3.5.0
+      │ ├── assertion-error@1.0.2
+      │ ├─┬ deep-eql@0.1.3
+      │ │ └── type-detect@0.1.1
+      │ └── type-detect@1.0.0
+      ├── deep-equal@1.0.1
+      ├── lodash@4.17.4
+      ├─┬ mkdirp@0.5.1
+      │ └── minimist@0.0.8
+      └── propagate@0.4.0
+```
+
+_Alternatively a library like Ruby's VCR gem, but for Node could be used to
+record external API requests and play them back, however this will be simpler
+and direct although potentially requires more maintenance._
+
+Create an appropriate test to build a new instance of the FlightAPI that
+responds to an `airlines` method that returns an array of airlines, which should
+match the Mock data that intercepts the Locomotive code task airlines URL;
+`'http://node.locomote.com/code-task/airlines'`
+
+```javascript
+// spec/lib/services/FlightAPISpec.js
+const nock = require('nock');
+const request = require('request');
+
+const describedClass = require('../../../lib/services/FlightAPI');
+
+describe('FlightAPI library', function () {
+  describe('airlines', function () {
+    beforeEach(function () {
+      const airlinesData = [
+        { code: "FB", name: "FooBar" },
+        { code: "SU", name: "Aeroflot" },
+        { code: "MU", name: "China Eastern" },
+        { code: "EK", name: "Emirates" },
+        { code: "KE", name: "Korean Air lines" },
+        { code: "QF", name: "Qantas" },
+        { code: "SQ", name: "Singapore Airlines"}
+      ];
+
+      // Mock external request response
+      nock('http://node.locomote.com')
+        .get('/code-task/airlines')
+        .reply(200, airlinesData);
+    });
+
+    let subject = new describedClass();
+
+    it('returns an Array of airlines', function (done) {
+      subject.airlines(function (error, data) {
+        expect(data).toEqual(jasmine.any(Array));
+        expect(data).not.toBeLessThan(0);
+
+        data.forEach(function (airline) {
+          expect(airline.code).toEqual(jasmine.any(String));
+          expect(airline.name).toEqual(jasmine.any(String));
+        });
+
+        done();
+      });
+    });
+
+    it('first airline equals mock data', function (done) {
+      subject.airlines(function (error, data) {
+        expect(data[0]).toEqual({ code: "FB", name: "FooBar" });
+        done();
+      });
+    });
+  });
+});
+
+```
+
+Create the corresponding FlightAPI class to fulfil the above specification tests
+and generates a collection of airlines data from the external Locomotive API
+
+```javascript
+const request = require('request');
+
+function FlightAPI() {};
+
+FlightAPI.prototype.airlines = function (callback) {
+  request.get('http://node.locomote.com/code-task/airlines', function(error, response, body) {
+    let parsed = JSON.parse(body);
+    callback(response.statusCode, parsed);
+  });
+};
+
+module.exports = FlightAPI;
+```
+
+Update the main application to use this new `FlightAPI` class within its calls
+
+```javascript
+const FlightAPI = require('./lib/services/FlightAPI');
+const api = new FlightAPI();
+
+// ...
+
+app.get('/airlines', function (req, res) {
+  api.airlines(function (statusCode, data) {
+    res.status(statusCode).json(data);
+  });
+})
+```

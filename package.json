@@ -17,7 +17,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme",
   "devDependencies": {
-    "jasmine": "^2.6.0"
+    "jasmine": "^2.6.0",
+    "nock": "^9.0.13"
   },
   "dependencies": {
     "express": "^4.15.3",
