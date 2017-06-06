@@ -34,13 +34,13 @@ describe('FlightAPI library', function () {
     });
   });
 
-  describe('default properties', function () {
+  describe('custom properties', function () {
     const baseURL = 'https://example.com/';
-    const airlinesPath = 'air_lines';
 
     let subject = new describedClass({
       baseURL: 'https://example.com/',
-      airlinesPath: 'air_lines'
+      airlinesPath: 'air_lines',
+      airportsPath: 'air_ports'
     });
 
     it('baseURL', function (done) {
@@ -55,6 +55,17 @@ describe('FlightAPI library', function () {
 
     it('airlinesURL', function (done) {
       expect(subject.airlinesURL()).toEqual('https://example.com/air_lines');
+      done();
+    });
+
+    it('airportsPath', function (done) {
+      expect(subject.properties.airportsPath).toEqual('air_ports');
+      done();
+    });
+
+    it('airportsURL', function (done) {
+      expect(subject.airportsURL('Sydney'))
+        .toEqual('https://example.com/air_ports?q=Sydney');
       done();
     });
   });
