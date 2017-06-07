@@ -22,4 +22,17 @@ app.get('/airports', function (req, res) {
   });
 })
 
+// Lists all matching airports from the Flight API.
+app.get('/search', function (req, res) {
+  let params = {
+    date: req.query.date,
+    from: req.query.from,
+    to: req.query.to
+  };
+
+  api.search(params, function (error, data) {
+    res.status(200).json(data);
+  });
+})
+
 app.listen(3000);
