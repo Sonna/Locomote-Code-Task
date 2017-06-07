@@ -363,50 +363,50 @@ describe('FlightAPI library', function () {
 
     it('each flight has properties', function (done) {
       subject.flightSearch(airlineCode, params, function (error, data) {
-        data.forEach(function (serachResult) {
-          expect(serachResult.key).toEqual(jasmine.any(String));
-          expect(serachResult.airline).toEqual(jasmine.any(Object));
-          expect(serachResult.airline.code).toEqual(jasmine.any(String));
-          expect(serachResult.airline.name).toEqual(jasmine.any(String));
+        data.forEach(function (searchResult) {
+          expect(searchResult.key).toEqual(jasmine.any(String));
+          expect(searchResult.airline).toEqual(jasmine.any(Object));
+          expect(searchResult.airline.code).toEqual(jasmine.any(String));
+          expect(searchResult.airline.name).toEqual(jasmine.any(String));
 
-          expect(serachResult.flightNum).toEqual(jasmine.any(Number));
+          expect(searchResult.flightNum).toEqual(jasmine.any(Number));
 
-          expect(serachResult.start).toEqual(jasmine.any(Object));
-          expect(serachResult.start.dateTime).toEqual(jasmine.any(String));
-          expect(serachResult.start.airportCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.airportName).toEqual(jasmine.any(String));
-          expect(serachResult.start.cityCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.cityName).toEqual(jasmine.any(String));
-          expect(serachResult.start.countryCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.countryName).toEqual(jasmine.any(String));
-          expect(serachResult.start.latitude).toEqual(jasmine.any(Number));
-          expect(serachResult.start.longitude).toEqual(jasmine.any(Number));
-          expect(serachResult.start.stateCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.timeZone).toEqual(jasmine.any(String));
+          expect(searchResult.start).toEqual(jasmine.any(Object));
+          expect(searchResult.start.dateTime).toEqual(jasmine.any(String));
+          expect(searchResult.start.airportCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.airportName).toEqual(jasmine.any(String));
+          expect(searchResult.start.cityCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.cityName).toEqual(jasmine.any(String));
+          expect(searchResult.start.countryCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.countryName).toEqual(jasmine.any(String));
+          expect(searchResult.start.latitude).toEqual(jasmine.any(Number));
+          expect(searchResult.start.longitude).toEqual(jasmine.any(Number));
+          expect(searchResult.start.stateCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.timeZone).toEqual(jasmine.any(String));
 
-          expect(serachResult.finish).toEqual(jasmine.any(Object));
-          expect(serachResult.finish.dateTime).toEqual(jasmine.any(String));
-          expect(serachResult.finish.airportCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.airportName).toEqual(jasmine.any(String));
-          expect(serachResult.finish.cityCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.cityName).toEqual(jasmine.any(String));
-          expect(serachResult.finish.countryCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.countryName).toEqual(jasmine.any(String));
-          expect(serachResult.finish.latitude).toEqual(jasmine.any(Number));
-          expect(serachResult.finish.longitude).toEqual(jasmine.any(Number));
-          expect(serachResult.finish.stateCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.timeZone).toEqual(jasmine.any(String));
+          expect(searchResult.finish).toEqual(jasmine.any(Object));
+          expect(searchResult.finish.dateTime).toEqual(jasmine.any(String));
+          expect(searchResult.finish.airportCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.airportName).toEqual(jasmine.any(String));
+          expect(searchResult.finish.cityCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.cityName).toEqual(jasmine.any(String));
+          expect(searchResult.finish.countryCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.countryName).toEqual(jasmine.any(String));
+          expect(searchResult.finish.latitude).toEqual(jasmine.any(Number));
+          expect(searchResult.finish.longitude).toEqual(jasmine.any(Number));
+          expect(searchResult.finish.stateCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.timeZone).toEqual(jasmine.any(String));
 
-          expect(serachResult.plane).toEqual(jasmine.any(Object));
-          expect(serachResult.plane.code).toEqual(jasmine.any(String));
-          expect(serachResult.plane.shortName).toEqual(jasmine.any(String));
-          expect(serachResult.plane.fullName).toEqual(jasmine.any(String));
-          expect(serachResult.plane.manufacturer).toEqual(jasmine.any(String));
-          expect(serachResult.plane.model).toEqual(jasmine.any(String));
+          expect(searchResult.plane).toEqual(jasmine.any(Object));
+          expect(searchResult.plane.code).toEqual(jasmine.any(String));
+          expect(searchResult.plane.shortName).toEqual(jasmine.any(String));
+          expect(searchResult.plane.fullName).toEqual(jasmine.any(String));
+          expect(searchResult.plane.manufacturer).toEqual(jasmine.any(String));
+          expect(searchResult.plane.model).toEqual(jasmine.any(String));
 
-          expect(serachResult.distance).toEqual(jasmine.any(Number));
-          expect(serachResult.durationMin).toEqual(jasmine.any(Number));
-          expect(serachResult.price).toEqual(jasmine.any(Number));
+          expect(searchResult.distance).toEqual(jasmine.any(Number));
+          expect(searchResult.durationMin).toEqual(jasmine.any(Number));
+          expect(searchResult.price).toEqual(jasmine.any(Number));
         });
 
         done();
@@ -613,50 +613,50 @@ describe('FlightAPI library', function () {
 
     it('each flight has properties', function (done) {
       subject.search(params, function (error, data) {
-        data.forEach(function (serachResult) {
-          expect(serachResult.key).toEqual(jasmine.any(String));
-          expect(serachResult.airline).toEqual(jasmine.any(Object));
-          expect(serachResult.airline.code).toEqual(jasmine.any(String));
-          expect(serachResult.airline.name).toEqual(jasmine.any(String));
+        data.forEach(function (searchResult) {
+          expect(searchResult.key).toEqual(jasmine.any(String));
+          expect(searchResult.airline).toEqual(jasmine.any(Object));
+          expect(searchResult.airline.code).toEqual(jasmine.any(String));
+          expect(searchResult.airline.name).toEqual(jasmine.any(String));
 
-          expect(serachResult.flightNum).toEqual(jasmine.any(Number));
+          expect(searchResult.flightNum).toEqual(jasmine.any(Number));
 
-          expect(serachResult.start).toEqual(jasmine.any(Object));
-          expect(serachResult.start.dateTime).toEqual(jasmine.any(String));
-          expect(serachResult.start.airportCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.airportName).toEqual(jasmine.any(String));
-          expect(serachResult.start.cityCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.cityName).toEqual(jasmine.any(String));
-          expect(serachResult.start.countryCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.countryName).toEqual(jasmine.any(String));
-          expect(serachResult.start.latitude).toEqual(jasmine.any(Number));
-          expect(serachResult.start.longitude).toEqual(jasmine.any(Number));
-          expect(serachResult.start.stateCode).toEqual(jasmine.any(String));
-          expect(serachResult.start.timeZone).toEqual(jasmine.any(String));
+          expect(searchResult.start).toEqual(jasmine.any(Object));
+          expect(searchResult.start.dateTime).toEqual(jasmine.any(String));
+          expect(searchResult.start.airportCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.airportName).toEqual(jasmine.any(String));
+          expect(searchResult.start.cityCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.cityName).toEqual(jasmine.any(String));
+          expect(searchResult.start.countryCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.countryName).toEqual(jasmine.any(String));
+          expect(searchResult.start.latitude).toEqual(jasmine.any(Number));
+          expect(searchResult.start.longitude).toEqual(jasmine.any(Number));
+          expect(searchResult.start.stateCode).toEqual(jasmine.any(String));
+          expect(searchResult.start.timeZone).toEqual(jasmine.any(String));
 
-          expect(serachResult.finish).toEqual(jasmine.any(Object));
-          expect(serachResult.finish.dateTime).toEqual(jasmine.any(String));
-          expect(serachResult.finish.airportCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.airportName).toEqual(jasmine.any(String));
-          expect(serachResult.finish.cityCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.cityName).toEqual(jasmine.any(String));
-          expect(serachResult.finish.countryCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.countryName).toEqual(jasmine.any(String));
-          expect(serachResult.finish.latitude).toEqual(jasmine.any(Number));
-          expect(serachResult.finish.longitude).toEqual(jasmine.any(Number));
-          expect(serachResult.finish.stateCode).toEqual(jasmine.any(String));
-          expect(serachResult.finish.timeZone).toEqual(jasmine.any(String));
+          expect(searchResult.finish).toEqual(jasmine.any(Object));
+          expect(searchResult.finish.dateTime).toEqual(jasmine.any(String));
+          expect(searchResult.finish.airportCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.airportName).toEqual(jasmine.any(String));
+          expect(searchResult.finish.cityCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.cityName).toEqual(jasmine.any(String));
+          expect(searchResult.finish.countryCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.countryName).toEqual(jasmine.any(String));
+          expect(searchResult.finish.latitude).toEqual(jasmine.any(Number));
+          expect(searchResult.finish.longitude).toEqual(jasmine.any(Number));
+          expect(searchResult.finish.stateCode).toEqual(jasmine.any(String));
+          expect(searchResult.finish.timeZone).toEqual(jasmine.any(String));
 
-          expect(serachResult.plane).toEqual(jasmine.any(Object));
-          expect(serachResult.plane.code).toEqual(jasmine.any(String));
-          expect(serachResult.plane.shortName).toEqual(jasmine.any(String));
-          expect(serachResult.plane.fullName).toEqual(jasmine.any(String));
-          expect(serachResult.plane.manufacturer).toEqual(jasmine.any(String));
-          expect(serachResult.plane.model).toEqual(jasmine.any(String));
+          expect(searchResult.plane).toEqual(jasmine.any(Object));
+          expect(searchResult.plane.code).toEqual(jasmine.any(String));
+          expect(searchResult.plane.shortName).toEqual(jasmine.any(String));
+          expect(searchResult.plane.fullName).toEqual(jasmine.any(String));
+          expect(searchResult.plane.manufacturer).toEqual(jasmine.any(String));
+          expect(searchResult.plane.model).toEqual(jasmine.any(String));
 
-          expect(serachResult.distance).toEqual(jasmine.any(Number));
-          expect(serachResult.durationMin).toEqual(jasmine.any(Number));
-          expect(serachResult.price).toEqual(jasmine.any(Number));
+          expect(searchResult.distance).toEqual(jasmine.any(Number));
+          expect(searchResult.durationMin).toEqual(jasmine.any(Number));
+          expect(searchResult.price).toEqual(jasmine.any(Number));
         });
 
         done();
@@ -665,11 +665,11 @@ describe('FlightAPI library', function () {
 
     it('find mock flight', function (done) {
       subject.search(params, function (error, data) {
-        const serachResult = data.find(function (flight) {
+        const searchResult = data.find(function (flight) {
           return flight.key === 'UUY5MDUgMTUzNTgxMDQwMDAwMA==';
         });
 
-        expect(serachResult).toEqual({
+        expect(searchResult).toEqual({
           key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
           airline: {
             code: "FB",

@@ -223,11 +223,11 @@ describe('Application Server', function () {
     it('returns expected mock data', function (done) {
       this.requestPromise(searchParamsURL, true)
         .then(function (body) {
-          const serachResult = body.find(function (flight) {
+          const searchResult = body.find(function (flight) {
             return flight.key === 'UUY5MDUgMTUzNTgxMDQwMDAwMA==';
           });
 
-          expect(serachResult).toEqual({
+          expect(searchResult).toEqual({
             key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
             airline: {
               code: "BF",
