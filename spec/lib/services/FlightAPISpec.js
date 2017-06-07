@@ -464,4 +464,258 @@ describe('FlightAPI library', function () {
       });
     });
   });
+
+  describe('search', function () {
+    beforeEach(function () {
+      // http://node.locomote.com/code-task/airlines
+      const airlinesData = [
+        { code: "FB", name: "FooBar" },
+        { code: "QF", name: "Qantas" },
+        // { code: "SQ", name: "Singapore Airlines" }
+      ];
+
+      // Mock external request response
+      nock('http://node.locomote.com')
+        .get('/code-task/airlines')
+        .reply(200, airlinesData);
+
+      // http://node.locomote.com/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK
+      const foobarFlightSearchData = [
+        {
+          key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+          airline: {
+            code: "FB",
+            name: "FooBar"
+          },
+          flightNum: 905,
+          start: {
+            dateTime: "2018-09-02T16:42:00+10:00",
+            airportCode: "SYD",
+            airportName: "Kingsford Smith",
+            cityCode: "SYD",
+            cityName: "Sydney",
+            countryCode: "AU",
+            countryName: "Australia",
+            latitude: -33.946111,
+            longitude: 151.177222,
+            stateCode: "NS",
+            timeZone: "Australia/Sydney"
+          },
+          finish: {
+            dateTime: "2018-09-02T22:43:00-04:00",
+            airportCode: "JFK",
+            airportName: "John F Kennedy Intl",
+            cityCode: "NYC",
+            cityName: "New York",
+            countryCode: "US",
+            countryName: "United States",
+            latitude: 40.639751,
+            longitude: -73.778925,
+            stateCode: "NY",
+            timeZone: "America/New_York"
+          },
+          plane: {
+            code: "74H",
+            shortName: "Boeing 747-8",
+            fullName: "Boeing 747-8",
+            manufacturer: "Boeing",
+            model: "747-8 Intercontinental"
+          },
+          distance: 16014,
+          durationMin: 1201,
+          price: 2798.42
+        }
+      ];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK')
+        .reply(200, foobarFlightSearchData);
+
+      // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
+      const melbourneFlightSearchData = [
+        {
+          key: "UUY0MTkgMTUzNTgxMDQwMDAwMA==",
+          airline: {
+            code: "QF",
+            name: "Qantas Pandas"
+          },
+          flightNum: 419,
+          start: {
+            dateTime: "2018-09-02T23:58:00+10:00",
+            airportCode: "SYD",
+            airportName: "Kingsford Smith",
+            cityCode: "SYD",
+            cityName: "Sydney",
+            countryCode: "AU",
+            countryName: "Australia",
+            latitude: -33.946111,
+            longitude: 151.177222,
+            stateCode: "NS",
+          timeZone: "Australia/Sydney"
+          },
+          finish: {
+            dateTime: "2018-09-03T05:59:00-04:00",
+            airportCode: "JFK",
+            airportName: "John F Kennedy Intl",
+            cityCode: "NYC",
+            cityName: "New York",
+            countryCode: "US",
+            countryName: "United States",
+            latitude: 40.639751,
+            longitude: -73.778925,
+            stateCode: "NY",
+            timeZone: "America/New_York"
+          },
+          plane: {
+            code: "380",
+            shortName: "Airbus A380",
+            fullName: "Airbus Industrie A380",
+            manufacturer: "Airbus",
+            model: "A380"
+          },
+          distance: 16014,
+          durationMin: 1201,
+          price: 2116.63
+        }
+      ];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK')
+        .reply(200, melbourneFlightSearchData);
+
+      // http://node.locomote.com/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK
+      // Not Found
+      // var errorMessage = {
+      //   'statusCode': 404,
+      //   'error': 'Not Found'
+      // };
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK')
+        .reply(404);
+        // .reply(404, [errorMessage]);
+    });
+
+    let subject = new describedClass();
+    const date = '2018-09-02';
+    const from = 'SYD';
+    const to = 'JFK';
+    const params = { date: date, from: from, to: to };
+
+    it('returns an Array of searched flights', function (done) {
+      subject.search(params, function (error, data) {
+        expect(data).toEqual(jasmine.any(Array));
+        expect(data).not.toBeLessThan(0);
+
+        done();
+      });
+    });
+
+    it('each flight has properties', function (done) {
+      subject.search(params, function (error, data) {
+        data.forEach(function (serachResult) {
+          expect(serachResult.key).toEqual(jasmine.any(String));
+          expect(serachResult.airline).toEqual(jasmine.any(Object));
+          expect(serachResult.airline.code).toEqual(jasmine.any(String));
+          expect(serachResult.airline.name).toEqual(jasmine.any(String));
+
+          expect(serachResult.flightNum).toEqual(jasmine.any(Number));
+
+          expect(serachResult.start).toEqual(jasmine.any(Object));
+          expect(serachResult.start.dateTime).toEqual(jasmine.any(String));
+          expect(serachResult.start.airportCode).toEqual(jasmine.any(String));
+          expect(serachResult.start.airportName).toEqual(jasmine.any(String));
+          expect(serachResult.start.cityCode).toEqual(jasmine.any(String));
+          expect(serachResult.start.cityName).toEqual(jasmine.any(String));
+          expect(serachResult.start.countryCode).toEqual(jasmine.any(String));
+          expect(serachResult.start.countryName).toEqual(jasmine.any(String));
+          expect(serachResult.start.latitude).toEqual(jasmine.any(Number));
+          expect(serachResult.start.longitude).toEqual(jasmine.any(Number));
+          expect(serachResult.start.stateCode).toEqual(jasmine.any(String));
+          expect(serachResult.start.timeZone).toEqual(jasmine.any(String));
+
+          expect(serachResult.finish).toEqual(jasmine.any(Object));
+          expect(serachResult.finish.dateTime).toEqual(jasmine.any(String));
+          expect(serachResult.finish.airportCode).toEqual(jasmine.any(String));
+          expect(serachResult.finish.airportName).toEqual(jasmine.any(String));
+          expect(serachResult.finish.cityCode).toEqual(jasmine.any(String));
+          expect(serachResult.finish.cityName).toEqual(jasmine.any(String));
+          expect(serachResult.finish.countryCode).toEqual(jasmine.any(String));
+          expect(serachResult.finish.countryName).toEqual(jasmine.any(String));
+          expect(serachResult.finish.latitude).toEqual(jasmine.any(Number));
+          expect(serachResult.finish.longitude).toEqual(jasmine.any(Number));
+          expect(serachResult.finish.stateCode).toEqual(jasmine.any(String));
+          expect(serachResult.finish.timeZone).toEqual(jasmine.any(String));
+
+          expect(serachResult.plane).toEqual(jasmine.any(Object));
+          expect(serachResult.plane.code).toEqual(jasmine.any(String));
+          expect(serachResult.plane.shortName).toEqual(jasmine.any(String));
+          expect(serachResult.plane.fullName).toEqual(jasmine.any(String));
+          expect(serachResult.plane.manufacturer).toEqual(jasmine.any(String));
+          expect(serachResult.plane.model).toEqual(jasmine.any(String));
+
+          expect(serachResult.distance).toEqual(jasmine.any(Number));
+          expect(serachResult.durationMin).toEqual(jasmine.any(Number));
+          expect(serachResult.price).toEqual(jasmine.any(Number));
+        });
+
+        done();
+      });
+    });
+
+    it('find mock flight', function (done) {
+      subject.search(params, function (error, data) {
+        const serachResult = data.find(function (flight) {
+          return flight.key === 'UUY5MDUgMTUzNTgxMDQwMDAwMA==';
+        });
+
+        expect(serachResult).toEqual({
+          key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+          airline: {
+            code: "FB",
+            name: "FooBar"
+          },
+          flightNum: 905,
+          start: {
+            dateTime: "2018-09-02T16:42:00+10:00",
+            airportCode: "SYD",
+            airportName: "Kingsford Smith",
+            cityCode: "SYD",
+            cityName: "Sydney",
+            countryCode: "AU",
+            countryName: "Australia",
+            latitude: -33.946111,
+            longitude: 151.177222,
+            stateCode: "NS",
+            timeZone: "Australia/Sydney"
+          },
+          finish: {
+            dateTime: "2018-09-02T22:43:00-04:00",
+            airportCode: "JFK",
+            airportName: "John F Kennedy Intl",
+            cityCode: "NYC",
+            cityName: "New York",
+            countryCode: "US",
+            countryName: "United States",
+            latitude: 40.639751,
+            longitude: -73.778925,
+            stateCode: "NY",
+            timeZone: "America/New_York"
+          },
+          plane: {
+            code: "74H",
+            shortName: "Boeing 747-8",
+            fullName: "Boeing 747-8",
+            manufacturer: "Boeing",
+            model: "747-8 Intercontinental"
+          },
+          distance: 16014,
+          durationMin: 1201,
+          price: 2798.42
+        });
+
+        done();
+      });
+    });
+  });
 });
