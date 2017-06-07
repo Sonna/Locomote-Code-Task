@@ -471,7 +471,7 @@ describe('FlightAPI library', function () {
       const airlinesData = [
         { code: "FB", name: "FooBar" },
         { code: "QF", name: "Qantas" },
-        // { code: "SQ", name: "Singapore Airlines" }
+        { code: "SQ", name: "Singapore Airlines" }
       ];
 
       // Mock external request response
@@ -586,13 +586,13 @@ describe('FlightAPI library', function () {
       // http://node.locomote.com/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK
       // Not Found
       // var errorMessage = {
-      //   'statusCode': 404,
-      //   'error': 'Not Found'
+      //   'statusCode': 400,
+      //   'error': 'invalid airline'
       // };
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK')
-        .reply(404);
+        .reply(400);
         // .reply(404, [errorMessage]);
     });
 

@@ -137,7 +137,7 @@ describe('Application Server', function () {
     beforeEach(function () {
       const airlinesData = [
         { code: "BF", name: "BarFoo" },
-        // { code: "BB", name: "BazBar" }
+        { code: "BB", name: "BazBar" }
       ];
 
       // Mock external request response
@@ -199,7 +199,7 @@ describe('Application Server', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/BB?date=2018-09-02&from=SYD&to=JFK')
-        .reply(404);
+        .reply(400);
     });
 
     // const date = '2018-09-02';
