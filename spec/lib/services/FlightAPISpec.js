@@ -471,6 +471,40 @@ describe('FlightAPI library', function () {
         .get('/code-task/airlines')
         .reply(200, airlinesData);
 
+      const sydneyAirportsData = [{
+        airportCode: "SYD",
+        airportName: "Kingsford Smith",
+        cityCode: "SYD",
+        cityName: "Sydney",
+        countryCode: "AU",
+        countryName: "Australia",
+        latitude: -33.946111,
+        longitude: 151.177222,
+        stateCode: "NS",
+        timeZone: "Australia/Sydney"
+      }];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Sydney')
+        .reply(200, sydneyAirportsData);
+
+      const newyorkAirportsData = [{
+        airportCode: "JFK",
+        airportName: "John F Kennedy Intl",
+        cityCode: "NYC",
+        cityName: "New York",
+        countryCode: "US",
+        countryName: "United States",
+        latitude: 40.639751,
+        longitude: -73.778925,
+        stateCode: "NY",
+        timeZone: "America/New_York"
+      }];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=New%20York')
+        .reply(200, newyorkAirportsData);
+
       // http://node.locomote.com/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK
       const foobarFlightSearchData = [
         {
@@ -543,7 +577,7 @@ describe('FlightAPI library', function () {
             latitude: -33.946111,
             longitude: 151.177222,
             stateCode: "NS",
-          timeZone: "Australia/Sydney"
+            timeZone: "Australia/Sydney"
           },
           finish: {
             dateTime: "2018-09-03T05:59:00-04:00",
@@ -606,8 +640,8 @@ describe('FlightAPI library', function () {
 
     let subject = new describedClass();
     const date = '2018-09-02';
-    const from = 'SYD';
-    const to = 'JFK';
+    const from = 'Sydney';
+    const to = 'New York';
     const params = { date: date, from: from, to: to };
 
     it('returns an Array of searched flights', function (done) {

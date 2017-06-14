@@ -598,7 +598,7 @@ describe('SearchBox component', function () {
     });
 
     const subject = new describedClass({
-      from: "SYD", to: "MLB", travelDate: "2018-09-02"
+      from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
     });
 
     it('render outerHTML', function (done) {
@@ -620,7 +620,7 @@ describe('SearchBox component', function () {
 
     it('render outerHTML after search', function (done) {
       const _subject = new describedClass({
-        from: "SYD", to: "MLB", travelDate: "2018-09-02"
+        from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
@@ -693,7 +693,7 @@ describe('SearchBox component', function () {
         );
       }
 
-      _subject._searchFromServer("SYD", "MLB", "2018-09-02")
+      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02")
       done();
     });
 
@@ -737,13 +737,13 @@ describe('SearchBox component', function () {
         });
       };
 
-      _subject._searchFromServer("MLB", "SYB", "2018-09-02");
+      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02");
       done();
     });
 
     it('_getResults (after AJAX request with params)', function (done) {
       const _subject = new describedClass({
-        from: "SYD", to: "MLB", travelDate: "2018-09-02"
+        from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
@@ -753,17 +753,17 @@ describe('SearchBox component', function () {
           expect(result).toEqual(jasmine.any(SearchResult));
         });
       };
-      _subject._searchFromServer("SYD", "MLB", "2018-09-02")
+      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02")
 
       done();
     });
 
     it('_searchFromServer returns expected flights data', function (done) {
       const _subject = new describedClass({
-        from: "SYD", to: "MLB", travelDate: "2018-09-02"
+        from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
       });
 
-      _subject._searchFromServer("SYD", "MLB", "2018-09-02", function (error, data) {
+      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02", function (error, data) {
         expect(data).toEqual(sydneyToMelbourneFlightSearchData);
       });
       done();
