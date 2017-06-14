@@ -618,36 +618,12 @@ describe('SearchBox component', function () {
       done();
     });
 
-    it('_getResults (before AJAX request)', function (done) {
-      const _subject = new describedClass();
-      const results = _subject._getResults();
-
-      expect(results).toEqual([]);
-      done();
-    });
-
-    it('_getResults (after AJAX request)', function (done) {
-      const _subject = new describedClass();
-      _subject._searchFromServer();
-      const results = _subject._getResults();
-
-      expect(results).toEqual([]);
-      done();
-    });
-
-    it('_getResults (after AJAX request with params)', function (done) {
+    it('render outerHTML after search', function (done) {
       const _subject = new describedClass({
         from: "SYD", to: "MLB", travelDate: "2018-09-02"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-        const results = component._getResults();
-
-        expect(component.state.results).toEqual(sydneyToMelbourneFlightSearchData);
-        results.forEach(function(result) {
-          expect(result).toEqual(jasmine.any(SearchResult));
-        });
-
         expect(component.render().outerHTML).toEqual(
           '<div class="search-box">' +
             '<form id="search-form">' +
@@ -717,7 +693,52 @@ describe('SearchBox component', function () {
         );
       }
 
-      _subject._searchFromServer("SYD", "MLB", "2018-09-02");
+      _subject._searchFromServer("SYD", "MLB", "2018-09-02")
+      done();
+    });
+
+    it('_getResults (before AJAX request)', function (done) {
+      const _subject = new describedClass();
+      const results = _subject._getResults();
+
+      expect(results).toEqual([]);
+      done();
+    });
+
+    it('_getResults (after AJAX request with no params)', function (done) {
+      const _subject = new describedClass();
+      _subject._searchFromServer();
+      const results = _subject._getResults();
+
+      expect(results).toEqual([]);
+      done();
+    });
+
+    it('_getResults (after AJAX request with params)', function (done) {
+      const _subject = new describedClass({
+        from: "SYD", to: "MLB", travelDate: "2018-09-02"
+      });
+
+      _subject.reRenderCallback = function expectedResults(component, _) {
+        const results = component._getResults();
+
+        results.forEach(function(result) {
+          expect(result).toEqual(jasmine.any(SearchResult));
+        });
+      };
+      _subject._searchFromServer("SYD", "MLB", "2018-09-02")
+
+      done();
+    });
+
+    it('_searchFromServer returns expected flights data', function (done) {
+      const _subject = new describedClass({
+        from: "SYD", to: "MLB", travelDate: "2018-09-02"
+      });
+
+      _subject._searchFromServer("SYD", "MLB", "2018-09-02", function (error, data) {
+        expect(data).toEqual(sydneyToMelbourneFlightSearchData);
+      });
       done();
     });
   });
