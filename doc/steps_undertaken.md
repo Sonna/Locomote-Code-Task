@@ -628,3 +628,11 @@ FlightAPI.prototype.airlinesURL = function () {
 module.exports = FlightAPI;
 
 ```
+
+
+```
+    $ npm install --save-dev xmlhttprequest
+
+    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    └── xmlhttprequest@1.8.0
+```
