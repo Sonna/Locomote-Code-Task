@@ -1,9 +1,17 @@
-function initialize(event) {
-  var form = new SearchForm({
-    findSearchResults: function (from, to, travel_date) { console.log(from, to, travel_date) }
-  });
+function domRender(component, location) {
+  // component.update = domRender;
+  // component.parentContainer = container;
+  component.reRenderCallback = domRender;
+  component.reRenderLocation = location;
 
-  document.getElementById('main').appendChild(form.render());
+  location.innerHTML = null;
+  location.appendChild(component.render());
+}
+
+function initialize(event) {
+  var search = new SearchBox();
+
+  domRender(search, document.getElementById('main'));
 };
 
 (function () {
