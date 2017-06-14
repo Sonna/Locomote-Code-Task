@@ -1,5 +1,7 @@
 const nock = require('nock');
 
+const SearchResult = require('../../../lib/components/SearchResult');
+
 const describedClass = require('../../../lib/components/SearchBox');
 
 describe('SearchBox component', function () {
@@ -79,85 +81,6 @@ describe('SearchBox component', function () {
   });
 
   describe('functions with results', function () {
-    beforeEach(function () {
-      const airlinesData = [
-        { code: "FB", name: "FooBar" },
-        { code: "SU", name: "Aeroflot" },
-        { code: "MU", name: "China Eastern" },
-        { code: "EK", name: "Emirates" },
-        { code: "KE", name: "Korean Air lines" },
-        { code: "QF", name: "Qantas" },
-        { code: "SQ", name: "Singapore Airlines" }
-      ];
-
-      // Mock external request response
-      nock('http://node.locomote.com')
-        .get('/code-task/airlines')
-        .reply(200, airlinesData);
-
-      // http://node.locomote.com/code-task/airports?q=Melbourne
-      const melbourneAirportData = [
-        {
-          airportCode: "MLB",
-          airportName: "Melbourne International Arpt",
-          cityCode: "MLB",
-          cityName: "Melbourne",
-          countryCode: "US",
-          countryName: "United States",
-          latitude: 28.102753,
-          longitude: -80.645258,
-          stateCode: "FL",
-          timeZone: "America/New_York"
-        },
-        {
-          airportCode: "MEL",
-          airportName: "Tullamarine Arpt",
-          cityCode: "MEL",
-          cityName: "Melbourne",
-          countryCode: "AU",
-          countryName: "Australia",
-          latitude: -37.673333,
-          longitude: 144.843333,
-          stateCode: "VI",
-          timeZone: "Australia/Hobart"
-        }
-      ];
-
-      nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Melbourne')
-        .reply(200, melbourneAirportData);
-
-      // http://node.locomote.com/code-task/airports?q=Sydney
-      const sydneyAirportData = [
-        {
-          airportCode: "SYD",
-          airportName: "Kingsford Smith",
-          cityCode: "SYD",
-          cityName: "Sydney",
-          countryCode: "AU",
-          countryName: "Australia",
-          latitude: -33.946111,
-          longitude: 151.177222,
-          stateCode: "NS",
-          timeZone: "Australia/Sydney"
-        },
-        {
-          airportCode: "YQY",
-          airportName: "Sydney Airport",
-          cityCode: "YQY",
-          cityName: "Sydney",
-          countryCode: "CA",
-          countryName: "Canada",
-          latitude: 46.161388,
-          longitude: -60.047779,
-          stateCode: "NS",
-          timeZone: "America/Halifax"
-        }
-      ];
-
-      nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Sydney')
-        .reply(200, sydneyAirportData);
 
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MLB
       const sydneyToMelbourneFlightSearchData = [
@@ -559,6 +482,86 @@ describe('SearchBox component', function () {
         }
       ];
 
+    beforeEach(function () {
+      const airlinesData = [
+        { code: "FB", name: "FooBar" },
+        { code: "SU", name: "Aeroflot" },
+        { code: "MU", name: "China Eastern" },
+        { code: "EK", name: "Emirates" },
+        { code: "KE", name: "Korean Air lines" },
+        { code: "QF", name: "Qantas" },
+        { code: "SQ", name: "Singapore Airlines" }
+      ];
+
+      // Mock external request response
+      nock('http://node.locomote.com')
+        .get('/code-task/airlines')
+        .reply(200, airlinesData);
+
+      // http://node.locomote.com/code-task/airports?q=Melbourne
+      const melbourneAirportData = [
+        {
+          airportCode: "MLB",
+          airportName: "Melbourne International Arpt",
+          cityCode: "MLB",
+          cityName: "Melbourne",
+          countryCode: "US",
+          countryName: "United States",
+          latitude: 28.102753,
+          longitude: -80.645258,
+          stateCode: "FL",
+          timeZone: "America/New_York"
+        },
+        {
+          airportCode: "MEL",
+          airportName: "Tullamarine Arpt",
+          cityCode: "MEL",
+          cityName: "Melbourne",
+          countryCode: "AU",
+          countryName: "Australia",
+          latitude: -37.673333,
+          longitude: 144.843333,
+          stateCode: "VI",
+          timeZone: "Australia/Hobart"
+        }
+      ];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Melbourne')
+        .reply(200, melbourneAirportData);
+
+      // http://node.locomote.com/code-task/airports?q=Sydney
+      const sydneyAirportData = [
+        {
+          airportCode: "SYD",
+          airportName: "Kingsford Smith",
+          cityCode: "SYD",
+          cityName: "Sydney",
+          countryCode: "AU",
+          countryName: "Australia",
+          latitude: -33.946111,
+          longitude: 151.177222,
+          stateCode: "NS",
+          timeZone: "Australia/Sydney"
+        },
+        {
+          airportCode: "YQY",
+          airportName: "Sydney Airport",
+          cityCode: "YQY",
+          cityName: "Sydney",
+          countryCode: "CA",
+          countryName: "Canada",
+          latitude: 46.161388,
+          longitude: -60.047779,
+          stateCode: "NS",
+          timeZone: "America/Halifax"
+        }
+      ];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Sydney')
+        .reply(200, sydneyAirportData);
+
       // Valid Flights
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MLB')
@@ -616,17 +619,105 @@ describe('SearchBox component', function () {
     });
 
     it('_getResults (before AJAX request)', function (done) {
-      const results = subject._getResults();
+      const _subject = new describedClass();
+      const results = _subject._getResults();
 
       expect(results).toEqual([]);
       done();
     });
 
     it('_getResults (after AJAX request)', function (done) {
-      subject._searchFromServer();
-      const results = subject._getResults();
+      const _subject = new describedClass();
+      _subject._searchFromServer();
+      const results = _subject._getResults();
 
       expect(results).toEqual([]);
+      done();
+    });
+
+    it('_getResults (after AJAX request with params)', function (done) {
+      const _subject = new describedClass({
+        from: "SYD", to: "MLB", travelDate: "2018-09-02"
+      });
+
+      _subject.reRenderCallback = function expectedResults(component, _) {
+        const results = component._getResults();
+
+        expect(component.state.results).toEqual(sydneyToMelbourneFlightSearchData);
+        results.forEach(function(result) {
+          expect(result).toEqual(jasmine.any(SearchResult));
+        });
+
+        expect(component.render().outerHTML).toEqual(
+          '<div class="search-box">' +
+            '<form id="search-form">' +
+              '<label for="from">From location</label>' +
+              '<input type="text" name="from" value="SYD">' +
+              '<label for="to">To location</label>' +
+              '<input type="text" name="to" value="MLB">' +
+              '<label for="travel_date">Travel date</label>' +
+              '<input type="text" name="travel_date" value="2018-09-02">' +
+              '<input type="submit" value="Search">' +
+            '</form>' +
+            '<article id="UUY5MDUgMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 905</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2798.42</p>' +
+            '</article>' +
+            '<article id="UUY0MTkgMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 419</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2116.63</p>' +
+            '</article>' +
+            '<article id="UUY2NSAxNTM1ODEwNDAwMDAw">' +
+              '<p>flightNum: 65</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2541.81</p>' +
+            '</article>' +
+            '<article id="UUYxMjcgMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 127</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 1938.55</p>' +
+            '</article>' +
+            '<article id="UUYzMDggMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 308</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2942.3</p>' +
+            '</article>' +
+            '<article id="UUY0MzAgMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 430</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2019.05</p>' +
+            '</article>' +
+            '<article id="UUY1NDQgMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 544</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2330.31</p>' +
+            '</article>' +
+            '<article id="UUYzMzAgMTUzNTgxMDQwMDAwMA==">' +
+              '<p>flightNum: 330</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2918.99</p>' +
+            '</article>' +
+            '<article id="UUY5NCAxNTM1ODEwNDAwMDAw">' +
+              '<p>flightNum: 94</p>' +
+              '<p>distance: 16014</p>' +
+              '<p>durationMin: 1201</p>' +
+              '<p>price: 2225.91</p>' +
+            '</article>' +
+          '</div>'
+        );
+      }
+
+      _subject._searchFromServer("SYD", "MLB", "2018-09-02");
       done();
     });
   });
