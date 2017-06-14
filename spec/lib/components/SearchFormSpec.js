@@ -3,14 +3,14 @@ const describedClass = require('../../../lib/components/SearchForm');
 describe('SearchForm component', function () {
   let subject = new describedClass();
 
-  describe('default state', function () {
-    it('has internal state', function (done) {
-      expect(subject.state).toEqual(jasmine.any(Object));
+  describe('default props', function () {
+    it('has internal props', function (done) {
+      expect(subject.props).toEqual(jasmine.any(Object));
       done();
     });
 
     it('has internal findSearchResults function', function (done) {
-      expect(subject.state.findSearchResults).toEqual(jasmine.any(Function));
+      expect(subject.props.findSearchResults).toEqual(jasmine.any(Function));
       done();
     });
   });
@@ -25,11 +25,11 @@ describe('SearchForm component', function () {
       expect(subject.render().outerHTML).toEqual(
         '<form id="search-form">' +
           '<label for="from">From location</label>' +
-          '<input type="text" name="from">' +
+          '<input type="text" name="from" value="">' +
           '<label for="to">To location</label>' +
-          '<input type="text" name="to">' +
+          '<input type="text" name="to" value="">' +
           '<label for="travel_date">Travel date</label>' +
-          '<input type="text" name="travel_date">' +
+          '<input type="text" name="travel_date" value="">' +
           '<input type="submit" value="Search">' +
         '</form>'
       );
