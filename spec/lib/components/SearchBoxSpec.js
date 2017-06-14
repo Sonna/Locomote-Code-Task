@@ -1,6 +1,7 @@
 const nock = require('nock');
 
 const SearchResult = require('../../../lib/components/SearchResult');
+const NullSearchResult = require('../../../lib/components/NullSearchResult');
 
 const describedClass = require('../../../lib/components/SearchBox');
 
@@ -81,7 +82,6 @@ describe('SearchBox component', function () {
   });
 
   describe('functions with results', function () {
-
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MLB
       const sydneyToMelbourneFlightSearchData = [
         {
@@ -707,10 +707,37 @@ describe('SearchBox component', function () {
 
     it('_getResults (after AJAX request with no params)', function (done) {
       const _subject = new describedClass();
+
+      _subject.reRenderCallback = function expectedResults(component, _) {
+        const results = component._getResults();
+        expect(results).toEqual([]);
+      };
+
       _subject._searchFromServer();
       const results = _subject._getResults();
 
       expect(results).toEqual([]);
+      done();
+    });
+
+    it('_getResults (after AJAX request with with params, but no results)', function (done) {
+      ["FB", "SU", "MU", "EK", "KE", "QF", "SQ"].forEach(function (airportCode) {
+        nock('http://node.locomote.com')
+          .get('/code-task/flight_search/SQ?date=2018-09-02&from=MLB&to=SYD')
+          .reply(400);
+      });
+
+      const _subject = new describedClass();
+
+      _subject.reRenderCallback = function expectedResults(component, _) {
+        const results = component._getResults();
+
+        results.forEach(function(result) {
+          expect(result).toEqual([jasmine.any(NullSearchResult)]);
+        });
+      };
+
+      _subject._searchFromServer("MLB", "SYB", "2018-09-02");
       done();
     });
 
