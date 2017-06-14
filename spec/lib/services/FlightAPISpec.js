@@ -344,6 +344,137 @@ describe('asyncAirlines', function () {
     });
   });
 
+
+  describe('asyncAirports', function () {
+    beforeEach(function () {
+      // http://node.locomote.com/code-task/airports?q=Melbourne
+      const melbourneAirportData = [
+        {
+          airportCode: "MLB",
+          airportName: "Melbourne International Arpt",
+          cityCode: "MLB",
+          cityName: "Melbourne",
+          countryCode: "US",
+          countryName: "United States",
+          latitude: 28.102753,
+          longitude: -80.645258,
+          stateCode: "FL",
+          timeZone: "America/New_York"
+        },
+        {
+          airportCode: "MEL",
+          airportName: "Tullamarine Arpt",
+          cityCode: "MEL",
+          cityName: "Melbourne",
+          countryCode: "AU",
+          countryName: "Australia",
+          latitude: -37.673333,
+          longitude: 144.843333,
+          stateCode: "VI",
+          timeZone: "Australia/Hobart"
+        }
+      ];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Melbourne')
+        .reply(200, melbourneAirportData);
+
+      // http://node.locomote.com/code-task/airports?q=Sydney
+      const sydneyAirportData = [
+        {
+          airportCode: "SYD",
+          airportName: "Kingsford Smith",
+          cityCode: "SYD",
+          cityName: "Sydney",
+          countryCode: "AU",
+          countryName: "Australia",
+          latitude: -33.946111,
+          longitude: 151.177222,
+          stateCode: "NS",
+          timeZone: "Australia/Sydney"
+        },
+        {
+          airportCode: "YQY",
+          airportName: "Sydney Airport",
+          cityCode: "YQY",
+          cityName: "Sydney",
+          countryCode: "CA",
+          countryName: "Canada",
+          latitude: 46.161388,
+          longitude: -60.047779,
+          stateCode: "NS",
+          timeZone: "America/Halifax"
+        }
+      ];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Sydney')
+        .reply(200, sydneyAirportData);
+    });
+
+    let subject = new describedClass();
+
+    it('returns an Array of Melbourne airports asynchronously', function (done) {
+      subject.asyncAirports('Melbourne')
+        .then(function (data) {
+          expect(data).toEqual(jasmine.any(Array));
+          expect(data).not.toBeLessThan(0);
+
+          done();
+        });
+    });
+
+    it('returns an Array of Sydney airports asynchronously', function (done) {
+      subject.asyncAirports('Sydney')
+        .then(function (data) {
+          expect(data).toEqual(jasmine.any(Array));
+          expect(data).not.toBeLessThan(0);
+
+          done();
+        });
+    });
+
+    it('each airport has properties asynchronously', function (done) {
+      subject.asyncAirports('Sydney')
+        .then(function (data) {
+          data.forEach(function (airport) {
+            expect(airport.airportCode).toEqual(jasmine.any(String));
+            expect(airport.airportName).toEqual(jasmine.any(String));
+            expect(airport.cityCode).toEqual(jasmine.any(String));
+            expect(airport.cityName).toEqual(jasmine.any(String));
+            expect(airport.countryCode).toEqual(jasmine.any(String));
+            expect(airport.countryName).toEqual(jasmine.any(String));
+            expect(airport.latitude).toEqual(jasmine.any(Number));
+            expect(airport.longitude).toEqual(jasmine.any(Number));
+            expect(airport.stateCode).toEqual(jasmine.any(String));
+            expect(airport.timeZone).toEqual(jasmine.any(String));
+          });
+
+          done();
+        });
+    });
+
+    it('first airport equals mock data asynchronously', function (done) {
+      subject.asyncAirports('Melbourne')
+        .then(function (data) {
+          expect(data[0]).toEqual({
+            airportCode: "MLB",
+            airportName: "Melbourne International Arpt",
+            cityCode: "MLB",
+            cityName: "Melbourne",
+            countryCode: "US",
+            countryName: "United States",
+            latitude: 28.102753,
+            longitude: -80.645258,
+            stateCode: "FL",
+            timeZone: "America/New_York"
+          });
+
+          done();
+        });
+    });
+  });
+
   describe('flightSearch', function () {
     beforeEach(function () {
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
