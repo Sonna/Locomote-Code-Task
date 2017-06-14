@@ -156,18 +156,6 @@ describe('FlightAPI library', function () {
       // http://node.locomote.com/code-task/airports?q=Melbourne
       const melbourneAirportData = [
         {
-          airportCode: "FOO",
-          airportName: "Foo Pretend Airport",
-          cityCode: "BAR",
-          cityName: "Barfield",
-          countryCode: "EU",
-          countryName: "Europe",
-          latitude: 12.345678,
-          longitude: -109.876543,
-          stateCode: "SA",
-          timeZone: "Japan/Tokyo"
-        },
-        {
           airportCode: "MLB",
           airportName: "Melbourne International Arpt",
           cityCode: "MLB",
@@ -272,16 +260,16 @@ describe('FlightAPI library', function () {
     it('first airport equals mock data', function (done) {
       subject.airports('Melbourne', function (error, data) {
         expect(data[0]).toEqual({
-          airportCode: "FOO",
-          airportName: "Foo Pretend Airport",
-          cityCode: "BAR",
-          cityName: "Barfield",
-          countryCode: "EU",
-          countryName: "Europe",
-          latitude: 12.345678,
-          longitude: -109.876543,
-          stateCode: "SA",
-          timeZone: "Japan/Tokyo"
+          airportCode: "MLB",
+          airportName: "Melbourne International Arpt",
+          cityCode: "MLB",
+          cityName: "Melbourne",
+          countryCode: "US",
+          countryName: "United States",
+          latitude: 28.102753,
+          longitude: -80.645258,
+          stateCode: "FL",
+          timeZone: "America/New_York"
         });
 
         done();
@@ -470,6 +458,10 @@ describe('FlightAPI library', function () {
       // http://node.locomote.com/code-task/airlines
       const airlinesData = [
         { code: "FB", name: "FooBar" },
+        { code: "SU", name: "Aeroflot" },
+        { code: "MU", name: "China Eastern" },
+        { code: "EK", name: "Emirates" },
+        { code: "KE", name: "Korean Air lines" },
         { code: "QF", name: "Qantas" },
         { code: "SQ", name: "Singapore Airlines" }
       ];
@@ -482,7 +474,7 @@ describe('FlightAPI library', function () {
       // http://node.locomote.com/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK
       const foobarFlightSearchData = [
         {
-          key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+          key: "DDY5MDUgMTUzNTgxMDQwMDAwMA==",
           airline: {
             code: "FB",
             name: "FooBar"
@@ -591,6 +583,22 @@ describe('FlightAPI library', function () {
       // };
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SU?date=2018-09-02&from=SYD&to=JFK')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=JFK')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/EK?date=2018-09-02&from=SYD&to=JFK')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=JFK')
+        .reply(400);
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK')
         .reply(400);
         // .reply(404, [errorMessage]);
@@ -666,11 +674,11 @@ describe('FlightAPI library', function () {
     it('find mock flight', function (done) {
       subject.search(params, function (error, data) {
         const searchResult = data.find(function (flight) {
-          return flight.key === 'UUY5MDUgMTUzNTgxMDQwMDAwMA==';
+          return flight.key === 'DDY5MDUgMTUzNTgxMDQwMDAwMA==';
         });
 
         expect(searchResult).toEqual({
-          key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+          key: "DDY5MDUgMTUzNTgxMDQwMDAwMA==",
           airline: {
             code: "FB",
             name: "FooBar"
