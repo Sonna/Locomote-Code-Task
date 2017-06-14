@@ -339,3 +339,41 @@ Please send us a zip/gz/link to repository with your solution.
 
 Provide a `start.sh` script in the root folder which will perform all required
 package installation, and launch the server on port 3000.
+
+## Mistakens and assumptions
+
+I failed to initially see the conversion process from Location of Airport, to
+Airport codes, to then later query the FlightAPI as;
+
+- [`flight_search/QF?date=2018-09-02&from=SYD&to=JFK`](http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK)
+
+Not
+
+- [`flight_search/QF?date=2018-09-02&from=Sydney&to=New%20York`](http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=Sydney&to=New%20York)
+
+This meant I had to go back through a fix this broken assumption and update the
+Search Form and `search` API async callbacks to add in this extra step first to
+make the final process look something like the following:
+
+```
+[Input]
+  from: 'Melbourne'
+  to:   'Sydney'
+  date: '2017-06-13'
+
+[getAirportCodes]
+  fromAirports: 'Melbourne' -> ['MLB', 'MEL']
+  toAirports:   'Sydney'    -> ['SYD', 'YQY']
+
+[getAirlines]
+  airlines: ["FB", "SU", "MU", "EK", "KE", "QF", "SQ", ...]
+
+[search]
+  airlines.forEach((airline) ->
+    fromAirportsforEach((from) ->
+      toAirportsforEach((to) ->
+        search(airline.code, from, to, date)
+      )
+    )
+  )
+```

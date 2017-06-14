@@ -275,6 +275,22 @@ describe('FlightAPI library', function () {
         done();
       });
     });
+
+    it('returns an array of airport codes for Melbourne', function (done) {
+      subject.airportCodesFromLocation('Melbourne', function (error, data) {
+        expect(data).toEqual(['MLB', 'MEL'])
+      });
+
+      done();
+    });
+
+    it('returns an array of airport codes for Sydney', function (done) {
+      subject.airportCodesFromLocation('Sydney', function (error, data) {
+        expect(data).toEqual(['SYD', 'YQY'])
+      });
+
+      done();
+    });
   });
 
   describe('flightSearch', function () {
