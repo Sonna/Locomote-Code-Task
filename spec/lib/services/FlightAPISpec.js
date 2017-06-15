@@ -473,6 +473,24 @@ describe('asyncAirlines', function () {
           done();
         });
     });
+
+    it('returns an array of airport codes for Melbourne asynchronously', function (done) {
+      subject.asyncAirportCodesFromLocation('Melbourne').then(
+        function (data) {
+          expect(data).toEqual(['MLB', 'MEL'])
+        });
+
+        done();
+      });
+
+    it('returns an array of airport codes for Sydney asynchronously', function (done) {
+      subject.asyncAirportCodesFromLocation('Sydney').then(
+        function (data) {
+          expect(data).toEqual(['SYD', 'YQY'])
+        });
+
+        done();
+      });
   });
 
   describe('flightSearch', function () {
