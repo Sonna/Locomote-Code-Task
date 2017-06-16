@@ -82,7 +82,7 @@ describe('SearchBox component', function () {
   });
 
   describe('functions with results', function () {
-      // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MLB
+      // http://node.locomote.com/code-task/flight_search/QF?date=2020-10-22&from=SYD&to=MLB
       const sydneyToMelbourneFlightSearchData = [
         {
           key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
@@ -92,7 +92,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 905,
           start: {
-            dateTime: "2018-09-02T16:42:00+10:00",
+            dateTime: "2020-10-22T16:42:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -105,7 +105,7 @@ describe('SearchBox component', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T22:43:00-04:00",
+            dateTime: "2020-10-22T22:43:00-04:00",
             airportCode: "MLB",
             airportName: "Melbourne International Arpt",
             cityCode: "MLB",
@@ -136,7 +136,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 419,
           start: {
-            dateTime: "2018-09-02T23:58:00+10:00",
+            dateTime: "2020-10-22T23:58:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -180,7 +180,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 65,
           start: {
-            dateTime: "2018-09-02T09:23:00+10:00",
+            dateTime: "2020-10-22T09:23:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -193,7 +193,7 @@ describe('SearchBox component', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T15:24:00-04:00",
+            dateTime: "2020-10-22T15:24:00-04:00",
             airportCode: "MLB",
             airportName: "Melbourne International Arpt",
             cityCode: "MLB",
@@ -224,7 +224,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 127,
           start: {
-            dateTime: "2018-09-02T22:56:00+10:00",
+            dateTime: "2020-10-22T22:56:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -268,7 +268,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 308,
           start: {
-            dateTime: "2018-09-02T15:38:00+10:00",
+            dateTime: "2020-10-22T15:38:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -281,7 +281,7 @@ describe('SearchBox component', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T21:39:00-04:00",
+            dateTime: "2020-10-22T21:39:00-04:00",
             airportCode: "MLB",
             airportName: "Melbourne International Arpt",
             cityCode: "MLB",
@@ -312,7 +312,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 430,
           start: {
-            dateTime: "2018-09-02T04:10:00+10:00",
+            dateTime: "2020-10-22T04:10:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -325,7 +325,7 @@ describe('SearchBox component', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T10:11:00-04:00",
+            dateTime: "2020-10-22T10:11:00-04:00",
             airportCode: "MLB",
             airportName: "Melbourne International Arpt",
             cityCode: "MLB",
@@ -356,7 +356,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 544,
           start: {
-            dateTime: "2018-09-02T20:52:00+10:00",
+            dateTime: "2020-10-22T20:52:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -400,7 +400,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 330,
           start: {
-            dateTime: "2018-09-02T15:38:00+10:00",
+            dateTime: "2020-10-22T15:38:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -413,7 +413,7 @@ describe('SearchBox component', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T21:39:00-04:00",
+            dateTime: "2020-10-22T21:39:00-04:00",
             airportCode: "MLB",
             airportName: "Melbourne International Arpt",
             cityCode: "MLB",
@@ -444,7 +444,7 @@ describe('SearchBox component', function () {
           },
           flightNum: 94,
           start: {
-            dateTime: "2018-09-02T07:18:00+10:00",
+            dateTime: "2020-10-22T07:18:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -457,7 +457,7 @@ describe('SearchBox component', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T13:19:00-04:00",
+            dateTime: "2020-10-22T13:19:00-04:00",
             airportCode: "MLB",
             airportName: "Melbourne International Arpt",
             cityCode: "MLB",
@@ -499,7 +499,7 @@ describe('SearchBox component', function () {
         .reply(200, airlinesData);
 
       // http://node.locomote.com/code-task/airports?q=Melbourne
-      const melbourneAirportData = [
+      const fooMelbourneAirportData = [
         {
           airportCode: "MLB",
           airportName: "Melbourne International Arpt",
@@ -527,11 +527,11 @@ describe('SearchBox component', function () {
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Melbourne')
-        .reply(200, melbourneAirportData);
+        .get('/code-task/airports?q=FooMelbourne')
+        .reply(200, fooMelbourneAirportData);
 
       // http://node.locomote.com/code-task/airports?q=Sydney
-      const sydneyAirportData = [
+      const fooSydneyAirportData = [
         {
           airportCode: "SYD",
           airportName: "Kingsford Smith",
@@ -559,138 +559,138 @@ describe('SearchBox component', function () {
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Sydney')
-        .reply(200, sydneyAirportData);
+        .get('/code-task/airports?q=FooSydney')
+        .reply(200, fooSydneyAirportData);
 
       // Valid Flights
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/QF?date=2020-10-22&from=SYD&to=MLB')
         .reply(200, sydneyToMelbourneFlightSearchData);
 
       // Invalid Flights (or flights not found)
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MEL')
-        .reply(400, sydneyToMelbourneFlightSearchData);
-
-      nock('http://node.locomote.com')
-        .get('/code-task/flight_search/QF?date=2018-09-02&from=YGY&to=MEL')
-        .reply(400, sydneyToMelbourneFlightSearchData);
-
-      nock('http://node.locomote.com')
-        .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/QF?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/QF?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/FB?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/FB?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/FB?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/FB?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/FB?date=2020-10-22&from=YGY&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/FB?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SU?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=YGY&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SU?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SU?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/SU?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SU?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/SU?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/SU?date=2020-10-22&from=YGY&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/SU?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/MU?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/MU?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/MU?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/MU?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/EK?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/MU?date=2020-10-22&from=YGY&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/EK?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/MU?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/EK?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/EK?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/EK?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/EK?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/EK?date=2020-10-22&from=YGY&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/EK?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/KE?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/KE?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/KE?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/KE?date=2020-10-22&from=SYD&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MLB')
+        .get('/code-task/flight_search/KE?date=2020-10-22&from=YGY&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MEL')
+        .get('/code-task/flight_search/KE?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MLB')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MEL')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2020-10-22&from=YGY&to=MEL')
         .reply(400);
     });
 
     const subject = new describedClass({
-      from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
+      from: "FooSydney", to: "FooMelbourne", travelDate: "2020-10-22"
     });
 
     it('render outerHTML', function (done) {
@@ -698,11 +698,11 @@ describe('SearchBox component', function () {
         '<div class="search-box">' +
           '<form id="search-form">' +
             '<label for="from">From location</label>' +
-            '<input type="text" name="from" value="Sydney">' +
+            '<input type="text" name="from" value="FooSydney">' +
             '<label for="to">To location</label>' +
-            '<input type="text" name="to" value="Melbourne">' +
+            '<input type="text" name="to" value="FooMelbourne">' +
             '<label for="travel_date">Travel date</label>' +
-            '<input type="text" name="travel_date" value="2018-09-02">' +
+            '<input type="text" name="travel_date" value="2020-10-22">' +
             '<input type="submit" value="Search">' +
           '</form>' +
         '</div>'
@@ -712,7 +712,7 @@ describe('SearchBox component', function () {
 
     it('render outerHTML after search', function (done) {
       const _subject = new describedClass({
-        from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
+        from: "FooSydney", to: "FooMelbourne", travelDate: "2020-10-22"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
@@ -720,11 +720,11 @@ describe('SearchBox component', function () {
           '<div class="search-box">' +
             '<form id="search-form">' +
               '<label for="from">From location</label>' +
-              '<input type="text" name="from" value="Sydney">' +
+              '<input type="text" name="from" value="FooSydney">' +
               '<label for="to">To location</label>' +
-              '<input type="text" name="to" value="Melbourne">' +
+              '<input type="text" name="to" value="FooMelbourne">' +
               '<label for="travel_date">Travel date</label>' +
-              '<input type="text" name="travel_date" value="2018-09-02">' +
+              '<input type="text" name="travel_date" value="2020-10-22">' +
               '<input type="submit" value="Search">' +
             '</form>' +
             '<article id="UUY5MDUgMTUzNTgxMDQwMDAwMA==">' +
@@ -785,7 +785,7 @@ describe('SearchBox component', function () {
         );
       }
 
-      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02")
+      _subject._searchFromServer("FooSydney", "FooMelbourne", "2020-10-22")
       done();
     });
 
@@ -813,11 +813,11 @@ describe('SearchBox component', function () {
     });
 
     it('_getResults (after AJAX request with with params, but no results)', function (done) {
-      ["FB", "SU", "MU", "EK", "KE", "QF", "SQ"].forEach(function (airportCode) {
-        nock('http://node.locomote.com')
-          .get('/code-task/flight_search/SQ?date=2018-09-02&from=MLB&to=SYD')
-          .reply(400);
-      });
+      // ["FB", "SU", "MU", "EK", "KE", "QF", "SQ"].forEach(function (airportCode) {
+      //   nock('http://node.locomote.com')
+      //     .get('/code-task/flight_search/SQ?date=2020-10-22&from=MLB&to=SYD')
+      //     .reply(400);
+      // });
 
       const _subject = new describedClass();
 
@@ -829,13 +829,13 @@ describe('SearchBox component', function () {
         });
       };
 
-      _subject._searchFromServer("Foo", "Bar", "2018-09-02");
+      _subject._searchFromServer("Foo", "Bar", "2020-10-22");
       done();
     });
 
     it('_getResults (after AJAX request with params)', function (done) {
       const _subject = new describedClass({
-        from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
+        from: "FooSydney", to: "FooMelbourne", travelDate: "2020-10-22"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
@@ -845,17 +845,17 @@ describe('SearchBox component', function () {
           expect(result).toEqual(jasmine.any(SearchResult));
         });
       };
-      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02")
+      _subject._searchFromServer("FooSydney", "FooMelbourne", "2020-10-22")
 
       done();
     });
 
     it('_searchFromServer returns expected flights data', function (done) {
       const _subject = new describedClass({
-        from: "Sydney", to: "Melbourne", travelDate: "2018-09-02"
+        from: "FooSydney", to: "FooMelbourne", travelDate: "2020-10-22"
       });
 
-      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02", function (error, data) {
+      _subject._searchFromServer("FooSydney", "FooMelbourne", "2020-10-22", function (error, data) {
         expect(data).toEqual(sydneyToMelbourneFlightSearchData);
       });
       done();

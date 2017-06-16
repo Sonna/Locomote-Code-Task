@@ -52,28 +52,29 @@ describe('Application Server', function () {
   describe('GET /airports', function () {
     beforeEach(function () {
       // http://node.locomote.com/code-task/airports?q=Melbourne
-      const melbourneAirportData = [
+      const barMelbourneAirportData = [
         { airportCode: "MLB", airportName: "Melbourne International Arpt" },
         { airportCode: "MEL", airportName: "Tullamarine Arpt" }
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Melbourne')
-        .reply(200, melbourneAirportData);
+        .get('/code-task/airports?q=BarMelbourne')
+        .reply(200, barMelbourneAirportData);
 
       // http://node.locomote.com/code-task/airports?q=Sydney
-      const sydneyAirportData = [
+      const barSydneyAirportData = [
         { airportCode: "SYD", airportName: "Kingsford Smith" },
         { airportCode: "YQY", airportName: "Sydney Airport" }
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Sydney')
-        .reply(200, sydneyAirportData);
+        .get('/code-task/airports?q=BarSydney')
+        .reply(200, barSydneyAirportData);
     });
 
     describe('when querying Melbourne airports', function () {
-      const melboruneAirportURL = url.resolve(baseURL, 'airports?q=Melbourne');
+      const melboruneAirportURL =
+        url.resolve(baseURL, 'airports?q=BarMelbourne');
 
       it('returns status code 200', function (done) {
         request.get(melboruneAirportURL, function (error, response, body) {
@@ -103,7 +104,7 @@ describe('Application Server', function () {
     });
 
     describe('when querying Sydney airports', function () {
-      const sydneyAirportURL = url.resolve(baseURL, 'airports?q=Sydney');
+      const sydneyAirportURL = url.resolve(baseURL, 'airports?q=BarSydney');
 
       it('returns status code 200', function (done) {
         request.get(sydneyAirportURL, function (error, response, body) {
