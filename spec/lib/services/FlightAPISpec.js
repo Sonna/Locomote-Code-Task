@@ -669,6 +669,185 @@ describe('asyncAirlines', function () {
     });
   });
 
+  describe('asyncFlightSearch', function () {
+    beforeEach(function () {
+      // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
+      const melbourneFlightData = [
+        {
+          key: "UUY0MTkgMTUzNTgxMDQwMDAwMA==",
+          airline: {
+            code: "QF",
+            name: "Qantas"
+          },
+          flightNum: 419,
+          start: {
+            dateTime: "2018-09-02T23:58:00+10:00",
+            airportCode: "SYD",
+            airportName: "Kingsford Smith",
+            cityCode: "SYD",
+            cityName: "Sydney",
+            countryCode: "AU",
+            countryName: "Australia",
+            latitude: -33.946111,
+            longitude: 151.177222,
+            stateCode: "NS",
+          timeZone: "Australia/Sydney"
+          },
+          finish: {
+            dateTime: "2018-09-03T05:59:00-04:00",
+            airportCode: "JFK",
+            airportName: "John F Kennedy Intl",
+            cityCode: "NYC",
+            cityName: "New York",
+            countryCode: "US",
+            countryName: "United States",
+            latitude: 40.639751,
+            longitude: -73.778925,
+            stateCode: "NY",
+            timeZone: "America/New_York"
+          },
+          plane: {
+            code: "380",
+            shortName: "Airbus A380",
+            fullName: "Airbus Industrie A380",
+            manufacturer: "Airbus",
+            model: "A380"
+          },
+          distance: 16014,
+          durationMin: 1201,
+          price: 2116.63
+        }
+      ];
+
+      // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK')
+        .reply(200, melbourneFlightData);
+    });
+
+    let subject = new describedClass();
+    const airlineCode = 'QF';
+    const date = '2018-09-02';
+    const from = 'SYD';
+    const to = 'JFK';
+    const params = { date: date, from: from, to: to };
+
+    it('returns an Array of flights for airlineCode', function (done) {
+      subject.asyncFlightSearch(airlineCode, params)
+        .then(function (data) {
+          expect(data).toEqual(jasmine.any(Array));
+          expect(data).not.toBeLessThan(0);
+
+          done();
+        });
+    });
+
+    it('each flight has properties', function (done) {
+      subject.asyncFlightSearch(airlineCode, params)
+        .then(function (data) {
+          data.forEach(function (searchResult) {
+            expect(searchResult.key).toEqual(jasmine.any(String));
+            expect(searchResult.airline).toEqual(jasmine.any(Object));
+            expect(searchResult.airline.code).toEqual(jasmine.any(String));
+            expect(searchResult.airline.name).toEqual(jasmine.any(String));
+
+            expect(searchResult.flightNum).toEqual(jasmine.any(Number));
+
+            expect(searchResult.start).toEqual(jasmine.any(Object));
+            expect(searchResult.start.dateTime).toEqual(jasmine.any(String));
+            expect(searchResult.start.airportCode).toEqual(jasmine.any(String));
+            expect(searchResult.start.airportName).toEqual(jasmine.any(String));
+            expect(searchResult.start.cityCode).toEqual(jasmine.any(String));
+            expect(searchResult.start.cityName).toEqual(jasmine.any(String));
+            expect(searchResult.start.countryCode).toEqual(jasmine.any(String));
+            expect(searchResult.start.countryName).toEqual(jasmine.any(String));
+            expect(searchResult.start.latitude).toEqual(jasmine.any(Number));
+            expect(searchResult.start.longitude).toEqual(jasmine.any(Number));
+            expect(searchResult.start.stateCode).toEqual(jasmine.any(String));
+            expect(searchResult.start.timeZone).toEqual(jasmine.any(String));
+
+            expect(searchResult.finish).toEqual(jasmine.any(Object));
+            expect(searchResult.finish.dateTime).toEqual(jasmine.any(String));
+            expect(searchResult.finish.airportCode).toEqual(jasmine.any(String));
+            expect(searchResult.finish.airportName).toEqual(jasmine.any(String));
+            expect(searchResult.finish.cityCode).toEqual(jasmine.any(String));
+            expect(searchResult.finish.cityName).toEqual(jasmine.any(String));
+            expect(searchResult.finish.countryCode).toEqual(jasmine.any(String));
+            expect(searchResult.finish.countryName).toEqual(jasmine.any(String));
+            expect(searchResult.finish.latitude).toEqual(jasmine.any(Number));
+            expect(searchResult.finish.longitude).toEqual(jasmine.any(Number));
+            expect(searchResult.finish.stateCode).toEqual(jasmine.any(String));
+            expect(searchResult.finish.timeZone).toEqual(jasmine.any(String));
+
+            expect(searchResult.plane).toEqual(jasmine.any(Object));
+            expect(searchResult.plane.code).toEqual(jasmine.any(String));
+            expect(searchResult.plane.shortName).toEqual(jasmine.any(String));
+            expect(searchResult.plane.fullName).toEqual(jasmine.any(String));
+            expect(searchResult.plane.manufacturer).toEqual(jasmine.any(String));
+            expect(searchResult.plane.model).toEqual(jasmine.any(String));
+
+            expect(searchResult.distance).toEqual(jasmine.any(Number));
+            expect(searchResult.durationMin).toEqual(jasmine.any(Number));
+            expect(searchResult.price).toEqual(jasmine.any(Number));
+          });
+
+          done();
+        });
+    });
+
+    it('first result equals mock data', function (done) {
+      subject.asyncFlightSearch(airlineCode, params)
+        .then(function (data) {
+          expect(data[0]).toEqual({
+            key: "UUY0MTkgMTUzNTgxMDQwMDAwMA==",
+            airline: {
+              code: "QF",
+              name: "Qantas"
+            },
+            flightNum: 419,
+            start: {
+              dateTime: "2018-09-02T23:58:00+10:00",
+              airportCode: "SYD",
+              airportName: "Kingsford Smith",
+              cityCode: "SYD",
+              cityName: "Sydney",
+              countryCode: "AU",
+              countryName: "Australia",
+              latitude: -33.946111,
+              longitude: 151.177222,
+              stateCode: "NS",
+            timeZone: "Australia/Sydney"
+            },
+            finish: {
+              dateTime: "2018-09-03T05:59:00-04:00",
+              airportCode: "JFK",
+              airportName: "John F Kennedy Intl",
+              cityCode: "NYC",
+              cityName: "New York",
+              countryCode: "US",
+              countryName: "United States",
+              latitude: 40.639751,
+              longitude: -73.778925,
+              stateCode: "NY",
+              timeZone: "America/New_York"
+            },
+            plane: {
+              code: "380",
+              shortName: "Airbus A380",
+              fullName: "Airbus Industrie A380",
+              manufacturer: "Airbus",
+              model: "A380"
+            },
+            distance: 16014,
+            durationMin: 1201,
+            price: 2116.63
+          });
+
+          done();
+        });
+    });
+  });
+
   describe('search', function () {
     beforeEach(function () {
       // http://node.locomote.com/code-task/airlines
