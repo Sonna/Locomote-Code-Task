@@ -606,9 +606,9 @@ describe('SearchBox component', function () {
         '<div class="search-box">' +
           '<form id="search-form">' +
             '<label for="from">From location</label>' +
-            '<input type="text" name="from" value="SYD">' +
+            '<input type="text" name="from" value="Sydney">' +
             '<label for="to">To location</label>' +
-            '<input type="text" name="to" value="MLB">' +
+            '<input type="text" name="to" value="Melbourne">' +
             '<label for="travel_date">Travel date</label>' +
             '<input type="text" name="travel_date" value="2018-09-02">' +
             '<input type="submit" value="Search">' +
@@ -628,9 +628,9 @@ describe('SearchBox component', function () {
           '<div class="search-box">' +
             '<form id="search-form">' +
               '<label for="from">From location</label>' +
-              '<input type="text" name="from" value="SYD">' +
+              '<input type="text" name="from" value="Sydney">' +
               '<label for="to">To location</label>' +
-              '<input type="text" name="to" value="MLB">' +
+              '<input type="text" name="to" value="Melbourne">' +
               '<label for="travel_date">Travel date</label>' +
               '<input type="text" name="travel_date" value="2018-09-02">' +
               '<input type="submit" value="Search">' +
@@ -737,7 +737,7 @@ describe('SearchBox component', function () {
         });
       };
 
-      _subject._searchFromServer("Sydney", "Melbourne", "2018-09-02");
+      _subject._searchFromServer("Foo", "Bar", "2018-09-02");
       done();
     });
 
