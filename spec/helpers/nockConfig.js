@@ -4,4 +4,5 @@ const nock = require('nock');
 //   (https://github.com/node-nock/nock/)
 beforeAll(function () {
   nock.disableNetConnect();
+  nock.enableNetConnect('localhost');
 });
