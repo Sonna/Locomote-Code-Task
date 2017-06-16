@@ -569,11 +569,43 @@ describe('SearchBox component', function () {
 
       // Invalid Flights (or flights not found)
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400, sydneyToMelbourneFlightSearchData);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/QF?date=2018-09-02&from=YGY&to=MEL')
+        .reply(400, sydneyToMelbourneFlightSearchData);
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/FB?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/FB?date=2018-09-02&from=YGY&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
@@ -581,7 +613,31 @@ describe('SearchBox component', function () {
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SU?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SU?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SU?date=2018-09-02&from=YGY&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/MU?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/MU?date=2018-09-02&from=YGY&to=MEL')
         .reply(400);
 
       nock('http://node.locomote.com')
@@ -589,11 +645,47 @@ describe('SearchBox component', function () {
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/EK?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/EK?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/EK?date=2018-09-02&from=YGY&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=MLB')
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/KE?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/KE?date=2018-09-02&from=YGY&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=MEL')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MLB')
+        .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YGY&to=MEL')
         .reply(400);
     });
 
