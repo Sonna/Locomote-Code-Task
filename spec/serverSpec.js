@@ -145,6 +145,42 @@ describe('Application Server', function () {
         .get('/code-task/airlines')
         .reply(200, airlinesData);
 
+      // Mock external Airportsrequest response
+      const BarFooAirportsData = [{
+        airportCode: "SYD",
+        airportName: "Kingsford Smith",
+        cityCode: "SYD",
+        cityName: "Sydney",
+        countryCode: "AU",
+        countryName: "Australia",
+        latitude: -33.946111,
+        longitude: 151.177222,
+        stateCode: "NS",
+        timeZone: "Australia/Sydney"
+      }];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Barrow%20Fools')
+        .reply(200, BarFooAirportsData);
+
+      const BazBarAirportsData = [{
+        airportCode: "JFK",
+        airportName: "John F Kennedy Intl",
+        cityCode: "NYC",
+        cityName: "New York",
+        countryCode: "US",
+        countryName: "United States",
+        latitude: 40.639751,
+        longitude: -73.778925,
+        stateCode: "NY",
+        timeZone: "America/New_York"
+      }];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports')
+        .query({ q: 'Bazzar Barren' })
+        .reply(200, BazBarAirportsData);
+
       // http://node.locomote.com/code-task/flight_search/BF?date=2018-09-02&from=SYD&to=JFK
       const barfooFlightSearchData = [
         {
@@ -208,7 +244,8 @@ describe('Application Server', function () {
     // const params = { date: date, from: from, to: to };
     // const stringifyParams = querystring.stringify(params);
     // const searchParamsURL = searchURL + stringifyParams;
-    const searchParamsURL = searchURL + "?date=2018-09-02&from=SYD&to=JFK";
+    const searchParamsURL =
+      searchURL + "?date=2018-09-02&from=Barrow%20Fools&to=Bazzar%20Barren";
 
     it('returns an Array of searched flights', function (done) {
       this.requestPromise(searchParamsURL, true)
