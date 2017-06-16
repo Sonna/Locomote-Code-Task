@@ -773,6 +773,10 @@ describe('asyncAirlines', function () {
         .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK')
         .reply(200, foobarFlightSearchData);
 
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/FB?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
+
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
       const melbourneFlightSearchData = [
         {
@@ -825,6 +829,10 @@ describe('asyncAirlines', function () {
         .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK')
         .reply(200, melbourneFlightSearchData);
 
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/QF?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
+
       // http://node.locomote.com/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK
       // Not Found
       // var errorMessage = {
@@ -837,20 +845,40 @@ describe('asyncAirlines', function () {
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SU?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=JFK')
         .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/MU?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/EK?date=2018-09-02&from=SYD&to=JFK')
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/EK?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=JFK')
         .reply(400);
 
       nock('http://node.locomote.com')
+        .get('/code-task/flight_search/KE?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
+
+      nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK')
         .reply(400);
+
+      nock('http://node.locomote.com')
+        .get('/code-task/flight_search/SQ?date=2018-09-02&from=YQY&to=JFK')
+        .reply(404)
         // .reply(404, [errorMessage]);
     });
 
