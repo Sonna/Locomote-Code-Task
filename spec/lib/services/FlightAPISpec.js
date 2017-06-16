@@ -1128,6 +1128,34 @@ describe('asyncAirlines', function () {
       });
     });
 
+    it('asyncSearchPreamble returns an Object of required search flight data', function (done) {
+      subject.asyncSearchPreamble(params)
+        .then(function (data) {
+          expect(data).toEqual(jasmine.any(Object));
+          done();
+        });
+    });
+
+    it('asyncSearchPreamble returns expected mocked search flight data', function (done) {
+      subject.asyncSearchPreamble(params)
+        .then(function (data) {
+          expect(data.airlines).toEqual([
+            { code: "FB", name: "FooBar" },
+            { code: "SU", name: "Aeroflot" },
+            { code: "MU", name: "China Eastern" },
+            { code: "EK", name: "Emirates" },
+            { code: "KE", name: "Korean Air lines" },
+            { code: "QF", name: "Qantas" },
+            { code: "SQ", name: "Singapore Airlines" }
+          ]);
+          expect(data.fromAirports).toEqual(['SYD', 'YQY']);
+          expect(data.toAirports).toEqual(['JFK']);
+          expect(data.travelDate).toEqual('2018-09-02');
+
+          done();
+        });
+    });
+
     it('find mock flight', function (done) {
       subject.search(params, function (error, data) {
         const searchResult = data.find(function (flight) {
