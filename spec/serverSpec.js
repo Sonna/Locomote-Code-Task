@@ -147,7 +147,7 @@ describe('Application Server', function () {
         .reply(200, airlinesData);
 
       // Mock external Airportsrequest response
-      const BarFooAirportsData = [{
+      const barFooAirportsData = [{
         airportCode: "SYD",
         airportName: "Kingsford Smith",
         cityCode: "SYD",
@@ -162,9 +162,9 @@ describe('Application Server', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=Barrow%20Fools')
-        .reply(200, BarFooAirportsData);
+        .reply(200, barFooAirportsData);
 
-      const BazBarAirportsData = [{
+      const bazBarAirportsData = [{
         airportCode: "JFK",
         airportName: "John F Kennedy Intl",
         cityCode: "NYC",
@@ -180,19 +180,19 @@ describe('Application Server', function () {
       nock('http://node.locomote.com')
         .get('/code-task/airports')
         .query({ q: 'Bazzar Barren' })
-        .reply(200, BazBarAirportsData);
+        .reply(200, bazBarAirportsData);
 
-      // http://node.locomote.com/code-task/flight_search/BF?date=2018-09-02&from=SYD&to=JFK
+      // http://node.locomote.com/code-task/flight_search/BF?date=2018-09-12&from=SYD&to=JFK
       const barfooFlightSearchData = [
         {
-          key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+          key: "H4Si_21qIlK6LsmSZ7trHg",
           airline: {
             code: "BF",
             name: "BarFoo"
           },
           flightNum: 905,
           start: {
-            dateTime: "2018-09-02T16:42:00+10:00",
+            dateTime: "2018-09-12T16:42:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -205,7 +205,7 @@ describe('Application Server', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T22:43:00-04:00",
+            dateTime: "2018-09-12T22:43:00-04:00",
             airportCode: "JFK",
             airportName: "John F Kennedy Intl",
             cityCode: "NYC",
@@ -231,22 +231,22 @@ describe('Application Server', function () {
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/BF?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/BF?date=2018-09-12&from=SYD&to=JFK')
         .reply(200, barfooFlightSearchData);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/BB?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/BB?date=2018-09-12&from=SYD&to=JFK')
         .reply(400);
     });
 
-    // const date = '2018-09-02';
+    // const date = '2018-09-12';
     // const from = 'SYD';
     // const to = 'JFK';
     // const params = { date: date, from: from, to: to };
     // const stringifyParams = querystring.stringify(params);
     // const searchParamsURL = searchURL + stringifyParams;
     const searchParamsURL =
-      searchURL + "?date=2018-09-02&from=Barrow%20Fools&to=Bazzar%20Barren";
+      searchURL + "?date=2018-09-12&from=Barrow%20Fools&to=Bazzar%20Barren";
 
     it('returns an Array of searched flights', function (done) {
       this.requestPromise(searchParamsURL, true)
@@ -262,18 +262,18 @@ describe('Application Server', function () {
       this.requestPromise(searchParamsURL, true)
         .then(function (body) {
           const searchResult = body.find(function (flight) {
-            return flight.key === 'UUY5MDUgMTUzNTgxMDQwMDAwMA==';
+            return flight.key === 'H4Si_21qIlK6LsmSZ7trHg';
           });
 
           expect(searchResult).toEqual({
-            key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+            key: "H4Si_21qIlK6LsmSZ7trHg",
             airline: {
               code: "BF",
               name: "BarFoo"
             },
             flightNum: 905,
             start: {
-              dateTime: "2018-09-02T16:42:00+10:00",
+              dateTime: "2018-09-12T16:42:00+10:00",
               airportCode: "SYD",
               airportName: "Kingsford Smith",
               cityCode: "SYD",
@@ -286,7 +286,7 @@ describe('Application Server', function () {
               timeZone: "Australia/Sydney"
             },
             finish: {
-              dateTime: "2018-09-02T22:43:00-04:00",
+              dateTime: "2018-09-12T22:43:00-04:00",
               airportCode: "JFK",
               airportName: "John F Kennedy Intl",
               cityCode: "NYC",

@@ -859,6 +859,8 @@ describe('asyncAirlines', function () {
       // http://node.locomote.com/code-task/airlines
       const airlinesData = [
         { code: "FB", name: "FooBar" },
+        { code: "BF", name: "BarFoo" },
+        { code: "BB", name: "BazBar" },
         { code: "SU", name: "Aeroflot" },
         { code: "MU", name: "China Eastern" },
         { code: "EK", name: "Emirates" },
@@ -1163,6 +1165,8 @@ describe('asyncAirlines', function () {
         .then(function (data) {
           expect(data.airlines).toEqual([
             { code: "FB", name: "FooBar" },
+            { code: "BF", name: "BarFoo" },
+            { code: "BB", name: "BazBar" },
             { code: "SU", name: "Aeroflot" },
             { code: "MU", name: "China Eastern" },
             { code: "EK", name: "Emirates" },
