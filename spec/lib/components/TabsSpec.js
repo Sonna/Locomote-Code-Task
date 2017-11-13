@@ -67,7 +67,7 @@ describe('Tabs component', function () {
           '<div class="tab">' +
             '<button class="tablinks active" data-target-id="Monday">Monday</button>' +
           '</div>' +
-          '<div id="Monday" class="tabcontent active" style="display: block;">' +
+          '<div id="Monday" class="tabcontent animate-bottom active" style="display: block;">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">8:00</div>' +
             '</div>' +
@@ -91,7 +91,7 @@ describe('Tabs component', function () {
             '<button class="tablinks active" data-target-id="Friday">Friday</button>' +
             '<button class="tablinks" data-target-id="Monday">Monday</button>' +
           '</div>' +
-          '<div id="Friday" class="tabcontent active" style="display: block;">' +
+          '<div id="Friday" class="tabcontent animate-bottom active" style="display: block;">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">20:00</div>' +
             '</div>' +
@@ -99,7 +99,7 @@ describe('Tabs component', function () {
               '<div class="tab-inner">24:00</div>' +
             '</div>' +
           '</div>' +
-          '<div id="Monday" class="tabcontent">' +
+          '<div id="Monday" class="tabcontent animate-bottom">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">8:00</div>' +
             '</div>' +
@@ -124,12 +124,12 @@ describe('Tabs component', function () {
             '<button class="tablinks" data-target-id="Tuesday">Tuesday</button>' +
             '<button class="tablinks active" data-target-id="Wednesday">Wednesday</button>' +
           '</div>' +
-          '<div id="Tuesday" class="tabcontent">' +
+          '<div id="Tuesday" class="tabcontent animate-bottom">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">9:00</div>' +
             '</div>' +
           '</div>' +
-          '<div id="Wednesday" class="tabcontent active" style="display: block;">' +
+          '<div id="Wednesday" class="tabcontent animate-bottom active" style="display: block;">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">10:00</div>' +
             '</div>' +
@@ -172,12 +172,12 @@ describe('Tabs component', function () {
             '<button class="tablinks active" data-target-id="Saturday">Saturday</button>' +
             '<button class="tablinks" data-target-id="Sunday">Sunday</button>' +
           '</div>' +
-          '<div id="Saturday" class="tabcontent active" style="display: block;">' +
+          '<div id="Saturday" class="tabcontent animate-bottom active" style="display: block;">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">0:00</div>' +
             '</div>' +
           '</div>' +
-          '<div id="Sunday" class="tabcontent">' +
+          '<div id="Sunday" class="tabcontent animate-bottom">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">1:00</div>' +
             '</div>' +
@@ -193,12 +193,12 @@ describe('Tabs component', function () {
             '<button class="tablinks" data-target-id="Saturday">Saturday</button>' +
             '<button class="tablinks active" data-target-id="Sunday">Sunday</button>' +
           '</div>' +
-          '<div id="Saturday" class="tabcontent" style="display: none;">' +
+          '<div id="Saturday" class="tabcontent animate-bottom" style="display: none;">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">0:00</div>' +
             '</div>' +
           '</div>' +
-          '<div id="Sunday" class="tabcontent active" style="display: block;">' +
+          '<div id="Sunday" class="tabcontent animate-bottom active" style="display: block;">' +
             '<div class="tab-outer">' +
               '<div class="tab-inner">1:00</div>' +
             '</div>' +
