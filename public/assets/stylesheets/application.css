@@ -110,6 +110,132 @@ form input[type=submit]:hover {
   width: 100%;
 }
 
+.search-results {
+  /*display: table;*/
+  width: 100%;
+}
+
+.search-result {
+  /*clear: both;*/
+  /*display: table-row;*/
+  /*float: left;*/
+  /*margin: 10px;*/
+  padding: 10px;
+  width: 100%;
+}
+.search-result:before,
+.search-result:after {
+  display: table;
+  content: " ";
+}
+.search-result:after {
+  clear: both;
+}
+.search-result + .search-result {
+  border-top-color: #d7d7d7;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: 0;
+}
+
+.search-result .start,
+.search-result .finish {
+  padding-right: 10px;
+  /*width: 33.33333%;*/
+}
+.search-result .start:before {
+  clear: both;
+  color: #d7d7d7;
+  content: ">";
+  font-size: 36px;
+  padding: 10px;
+  padding-left: 120px;
+  position: absolute;
+}
+@media (min-width: 750px) {
+  .search-result .start:before {
+    padding-left: 150px;
+  }
+}
+@media (min-width: 970px) {
+  .search-result .start:before {
+    padding-left: 175px;
+  }
+}
+.search-result .start .airport,
+.search-result .finish .airport {
+  clear: both;
+  float: left;
+}
+.search-result .start .datetime .time,
+.search-result .finish .datetime .time {
+  clear: both;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+}
+.search-result .start .datetime .period,
+.search-result .finish .datetime .period {
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.search-result .start .date,
+.search-result .finish .date {
+  clear: both;
+  float: left;
+}
+
+.search-result .flight-num {
+  display: block;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.search-result .flight-num,
+.search-result .fare {
+  line-height: 50px;
+}
+
+.search-result .fare {
+  font-weight: bold;
+  padding-right: 10px;
+}
+.search-result .fare .price {
+  font-size: 16px;
+}
+.search-result .fare .price {
+  font-size: 24px;
+}
+
+/* 2-columns full width */
+.search-result .start,
+.search-result .finish,
+.search-result .flight-details,
+.search-result .fare {
+  float: left;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  position: relative;
+  width: 50%;
+}
+@media (min-width: 750px) {
+  /* 4-columns full width */
+  .search-result .start,
+  .search-result .finish,
+  .search-result .flight-details,
+  .search-result .fare {
+    float: left;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: 25%;
+  }
+}
+
 /* Style the tab */
 .tab {
   border-color: #cccccc;
