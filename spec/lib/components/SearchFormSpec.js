@@ -24,13 +24,21 @@ describe('SearchForm component', function () {
     it('render outerHTML', function (done) {
       expect(subject.render().outerHTML).toEqual(
         '<form id="search-form">' +
-          '<label for="from">From location</label>' +
-          '<input type="text" name="from" value="">' +
-          '<label for="to">To location</label>' +
-          '<input type="text" name="to" value="">' +
-          '<label for="travel_date">Travel date</label>' +
-          '<input type="text" name="travel_date" value="">' +
-          '<input type="submit" value="Search">' +
+          '<div class="input-group">' +
+            '<label for="from">From location</label>' +
+            '<input type="text" name="from" value="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="to">To location</label>' +
+            '<input type="text" name="to" value="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="travel_date">Travel date</label>' +
+            '<input type="text" name="travel_date" value="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<input type="submit" value="Search">' +
+          '</div>' +
         '</form>'
       );
       done();

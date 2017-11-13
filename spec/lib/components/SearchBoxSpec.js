@@ -67,13 +67,21 @@ describe('SearchBox component', function () {
       expect(subject.render().outerHTML).toEqual(
         '<div class="search-box">' +
           '<form id="search-form">' +
-            '<label for="from">From location</label>' +
-            '<input type="text" name="from" value="">' +
-            '<label for="to">To location</label>' +
-            '<input type="text" name="to" value="">' +
-            '<label for="travel_date">Travel date</label>' +
-            '<input type="text" name="travel_date" value="">' +
-            '<input type="submit" value="Search">' +
+            '<div class="input-group">' +
+              '<label for="from">From location</label>' +
+              '<input type="text" name="from" value="">' +
+            '</div>' +
+            '<div class="input-group">' +
+              '<label for="to">To location</label>' +
+              '<input type="text" name="to" value="">' +
+            '</div>' +
+            '<div class="input-group">' +
+              '<label for="travel_date">Travel date</label>' +
+              '<input type="text" name="travel_date" value="">' +
+            '</div>' +
+            '<div class="input-group">' +
+              '<input type="submit" value="Search">' +
+            '</div>' +
           '</form>' +
         '</div>'
       );
@@ -697,13 +705,21 @@ describe('SearchBox component', function () {
       expect(subject.render().outerHTML).toEqual(
         '<div class="search-box">' +
           '<form id="search-form">' +
-            '<label for="from">From location</label>' +
-            '<input type="text" name="from" value="FooSydney">' +
-            '<label for="to">To location</label>' +
-            '<input type="text" name="to" value="FooMelbourne">' +
-            '<label for="travel_date">Travel date</label>' +
-            '<input type="text" name="travel_date" value="2020-10-22">' +
-            '<input type="submit" value="Search">' +
+            '<div class="input-group">' +
+              '<label for="from">From location</label>' +
+              '<input type="text" name="from" value="FooSydney">' +
+            '</div>' +
+            '<div class="input-group">' +
+              '<label for="to">To location</label>' +
+              '<input type="text" name="to" value="FooMelbourne">' +
+            '</div>' +
+            '<div class="input-group">' +
+              '<label for="travel_date">Travel date</label>' +
+              '<input type="text" name="travel_date" value="2020-10-22">' +
+            '</div>' +
+            '<div class="input-group">' +
+              '<input type="submit" value="Search">' +
+            '</div>' +
           '</form>' +
         '</div>'
       );
@@ -719,13 +735,21 @@ describe('SearchBox component', function () {
         expect(component.render().outerHTML).toEqual(
           '<div class="search-box">' +
             '<form id="search-form">' +
-              '<label for="from">From location</label>' +
-              '<input type="text" name="from" value="FooSydney">' +
-              '<label for="to">To location</label>' +
-              '<input type="text" name="to" value="FooMelbourne">' +
-              '<label for="travel_date">Travel date</label>' +
-              '<input type="text" name="travel_date" value="2020-10-22">' +
-              '<input type="submit" value="Search">' +
+              '<div class="input-group">' +
+                '<label for="from">From location</label>' +
+                '<input type="text" name="from" value="FooSydney">' +
+              '</div>' +
+              '<div class="input-group">' +
+                '<label for="to">To location</label>' +
+                '<input type="text" name="to" value="FooMelbourne">' +
+              '</div>' +
+              '<div class="input-group">' +
+                '<label for="travel_date">Travel date</label>' +
+                '<input type="text" name="travel_date" value="2020-10-22">' +
+              '</div>' +
+              '<div class="input-group">' +
+                '<input type="submit" value="Search">' +
+              '</div>' +
             '</form>' +
             '<article id="UUY5MDUgMTUzNTgxMDQwMDAwMA==">' +
               '<p>flightNum: 905</p>' +
