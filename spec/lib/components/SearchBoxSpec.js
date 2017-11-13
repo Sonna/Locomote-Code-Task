@@ -845,7 +845,7 @@ describe('SearchBox component', function () {
           expect(result).toEqual(jasmine.any(SearchResult));
         });
       };
-      _subject._searchFromServer("FooSydney", "FooMelbourne", "2020-10-22")
+      _subject._searchFromServer("FooSydney", "FooMelbourne", "2020-10-22");
 
       done();
     });
