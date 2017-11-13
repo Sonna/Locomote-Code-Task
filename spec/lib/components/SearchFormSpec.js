@@ -50,7 +50,7 @@ describe('SearchForm component', function () {
         target: {
           elements: {
             from: { value: 1 },
-            to: { value: '2'},
+            to: { value: '2' },
             travel_date: { value: '2017-06-13' }
           }
         }
