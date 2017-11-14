@@ -65,11 +65,45 @@ describe('SearchResult component', function () {
 
     it('render default outerHTML', function (done) {
       expect(subject.render().outerHTML).toEqual(
-        '<article id="">' +
-          '<p>flightNum: 0</p>' +
-          '<p>distance: 0</p>' +
-          '<p>durationMin: 0</p>' +
-          '<p>price: 0</p>' +
+        '<article id="" class="flight search-result">' +
+          '<section class="start">' +
+            '<span class="airport">' +
+              '<abbr title="">' +
+              '</abbr>' +
+            '</span>' +
+            '<time class="datetime" datetime="">' +
+            '<span class="time">' +
+              '<span class="period">AM</span>' +
+            '</span>' +
+            '<span class="date">Invalid Dat</span>' +
+            '</time>' +
+          '</section>' +
+          '<section class="finish">' +
+            '<span class="airport">' +
+              '<abbr title="">' +
+              '</abbr>' +
+            '</span>' +
+            '<time class="datetime" datetime="">' +
+            '<span class="time">' +
+              '<span class="period">AM</span>' +
+            '</span>' +
+            '<span class="date">Invalid Dat</span>' +
+            '</time>' +
+          '</section>' +
+          '<section class="flight-details">' +
+            '<span class="flight-num">' +
+              '<abbr title="">' +
+              '</abbr>' +
+              '<span>0</span>' +
+            '</span>' +
+            '<span class="duration-minimum">0<abbr title="minutes">min</abbr></span>' +
+            '<span class="divider"> / </span>' +
+            '<span class="distance">0<abbr title="meters">m</abbr></span>' +
+          '</section>' +
+          '<section class="fare">' +
+            '<span class="currency-symbol">$</span>' +
+            '<span class="price">0.00</span>' +
+          '</section>' +
          '</article>'
       );
       done();

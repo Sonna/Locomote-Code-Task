@@ -52,28 +52,29 @@ describe('Application Server', function () {
   describe('GET /airports', function () {
     beforeEach(function () {
       // http://node.locomote.com/code-task/airports?q=Melbourne
-      const melbourneAirportData = [
+      const barMelbourneAirportData = [
         { airportCode: "MLB", airportName: "Melbourne International Arpt" },
         { airportCode: "MEL", airportName: "Tullamarine Arpt" }
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Melbourne')
-        .reply(200, melbourneAirportData);
+        .get('/code-task/airports?q=BarMelbourne')
+        .reply(200, barMelbourneAirportData);
 
       // http://node.locomote.com/code-task/airports?q=Sydney
-      const sydneyAirportData = [
+      const barSydneyAirportData = [
         { airportCode: "SYD", airportName: "Kingsford Smith" },
         { airportCode: "YQY", airportName: "Sydney Airport" }
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/airports?q=Sydney')
-        .reply(200, sydneyAirportData);
+        .get('/code-task/airports?q=BarSydney')
+        .reply(200, barSydneyAirportData);
     });
 
     describe('when querying Melbourne airports', function () {
-      const melboruneAirportURL = url.resolve(baseURL, 'airports?q=Melbourne');
+      const melboruneAirportURL =
+        url.resolve(baseURL, 'airports?q=BarMelbourne');
 
       it('returns status code 200', function (done) {
         request.get(melboruneAirportURL, function (error, response, body) {
@@ -103,7 +104,7 @@ describe('Application Server', function () {
     });
 
     describe('when querying Sydney airports', function () {
-      const sydneyAirportURL = url.resolve(baseURL, 'airports?q=Sydney');
+      const sydneyAirportURL = url.resolve(baseURL, 'airports?q=BarSydney');
 
       it('returns status code 200', function (done) {
         request.get(sydneyAirportURL, function (error, response, body) {
@@ -145,17 +146,53 @@ describe('Application Server', function () {
         .get('/code-task/airlines')
         .reply(200, airlinesData);
 
-      // http://node.locomote.com/code-task/flight_search/BF?date=2018-09-02&from=SYD&to=JFK
+      // Mock external Airportsrequest response
+      const barFooAirportsData = [{
+        airportCode: "SYD",
+        airportName: "Kingsford Smith",
+        cityCode: "SYD",
+        cityName: "Sydney",
+        countryCode: "AU",
+        countryName: "Australia",
+        latitude: -33.946111,
+        longitude: 151.177222,
+        stateCode: "NS",
+        timeZone: "Australia/Sydney"
+      }];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports?q=Barrow%20Fools')
+        .reply(200, barFooAirportsData);
+
+      const bazBarAirportsData = [{
+        airportCode: "JFK",
+        airportName: "John F Kennedy Intl",
+        cityCode: "NYC",
+        cityName: "New York",
+        countryCode: "US",
+        countryName: "United States",
+        latitude: 40.639751,
+        longitude: -73.778925,
+        stateCode: "NY",
+        timeZone: "America/New_York"
+      }];
+
+      nock('http://node.locomote.com')
+        .get('/code-task/airports')
+        .query({ q: 'Bazzar Barren' })
+        .reply(200, bazBarAirportsData);
+
+      // http://node.locomote.com/code-task/flight_search/BF?date=2018-09-12&from=SYD&to=JFK
       const barfooFlightSearchData = [
         {
-          key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+          key: "H4Si_21qIlK6LsmSZ7trHg",
           airline: {
             code: "BF",
             name: "BarFoo"
           },
           flightNum: 905,
           start: {
-            dateTime: "2018-09-02T16:42:00+10:00",
+            dateTime: "2018-09-12T16:42:00+10:00",
             airportCode: "SYD",
             airportName: "Kingsford Smith",
             cityCode: "SYD",
@@ -168,7 +205,7 @@ describe('Application Server', function () {
             timeZone: "Australia/Sydney"
           },
           finish: {
-            dateTime: "2018-09-02T22:43:00-04:00",
+            dateTime: "2018-09-12T22:43:00-04:00",
             airportCode: "JFK",
             airportName: "John F Kennedy Intl",
             cityCode: "NYC",
@@ -194,21 +231,22 @@ describe('Application Server', function () {
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/BF?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/BF?date=2018-09-12&from=SYD&to=JFK')
         .reply(200, barfooFlightSearchData);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/BB?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/BB?date=2018-09-12&from=SYD&to=JFK')
         .reply(400);
     });
 
-    // const date = '2018-09-02';
+    // const date = '2018-09-12';
     // const from = 'SYD';
     // const to = 'JFK';
     // const params = { date: date, from: from, to: to };
     // const stringifyParams = querystring.stringify(params);
     // const searchParamsURL = searchURL + stringifyParams;
-    const searchParamsURL = searchURL + "?date=2018-09-02&from=SYD&to=JFK";
+    const searchParamsURL =
+      searchURL + "?date=2018-09-12&from=Barrow%20Fools&to=Bazzar%20Barren";
 
     it('returns an Array of searched flights', function (done) {
       this.requestPromise(searchParamsURL, true)
@@ -224,18 +262,18 @@ describe('Application Server', function () {
       this.requestPromise(searchParamsURL, true)
         .then(function (body) {
           const searchResult = body.find(function (flight) {
-            return flight.key === 'UUY5MDUgMTUzNTgxMDQwMDAwMA==';
+            return flight.key === 'H4Si_21qIlK6LsmSZ7trHg';
           });
 
           expect(searchResult).toEqual({
-            key: "UUY5MDUgMTUzNTgxMDQwMDAwMA==",
+            key: "H4Si_21qIlK6LsmSZ7trHg",
             airline: {
               code: "BF",
               name: "BarFoo"
             },
             flightNum: 905,
             start: {
-              dateTime: "2018-09-02T16:42:00+10:00",
+              dateTime: "2018-09-12T16:42:00+10:00",
               airportCode: "SYD",
               airportName: "Kingsford Smith",
               cityCode: "SYD",
@@ -248,7 +286,7 @@ describe('Application Server', function () {
               timeZone: "Australia/Sydney"
             },
             finish: {
-              dateTime: "2018-09-02T22:43:00-04:00",
+              dateTime: "2018-09-12T22:43:00-04:00",
               airportCode: "JFK",
               airportName: "John F Kennedy Intl",
               cityCode: "NYC",

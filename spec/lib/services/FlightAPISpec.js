@@ -234,6 +234,7 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=Melbourne')
+        // .query({ q: 'Melbourne' })
         .reply(200, melbourneAirportData);
 
       // http://node.locomote.com/code-task/airports?q=Sydney
@@ -266,6 +267,7 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=Sydney')
+        // .query({ q: 'Sydney' })
         .reply(200, sydneyAirportData);
     });
 
@@ -377,6 +379,7 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=Melbourne')
+        // .query({ q: 'Melbourne' })
         .reply(200, melbourneAirportData);
 
       // http://node.locomote.com/code-task/airports?q=Sydney
@@ -409,6 +412,7 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=Sydney')
+        // .query({ q: 'Sydney' })
         .reply(200, sydneyAirportData);
     });
 
@@ -546,6 +550,7 @@ describe('asyncAirlines', function () {
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK')
+        // .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(200, melbourneFlightData);
     });
 
@@ -722,6 +727,7 @@ describe('asyncAirlines', function () {
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK')
+        // .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(200, melbourneFlightData);
     });
 
@@ -853,6 +859,8 @@ describe('asyncAirlines', function () {
       // http://node.locomote.com/code-task/airlines
       const airlinesData = [
         { code: "FB", name: "FooBar" },
+        { code: "BF", name: "BarFoo" },
+        { code: "BB", name: "BazBar" },
         { code: "SU", name: "Aeroflot" },
         { code: "MU", name: "China Eastern" },
         { code: "EK", name: "Emirates" },
@@ -881,6 +889,7 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=Sydney')
+        // .query({ q: 'Sydney' })
         .reply(200, sydneyAirportsData);
 
       const newyorkAirportsData = [{
@@ -898,6 +907,7 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/airports?q=New%20York')
+        // .query({ q: 'New York' })
         .reply(200, newyorkAirportsData);
 
       // http://node.locomote.com/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK
@@ -950,10 +960,12 @@ describe('asyncAirlines', function () {
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/FB?date=2018-09-02&from=SYD&to=JFK')
+        // .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(200, foobarFlightSearchData);
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/FB?date=2018-09-02&from=YQY&to=JFK')
+        // .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
 
       // http://node.locomote.com/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK
@@ -1005,11 +1017,13 @@ describe('asyncAirlines', function () {
       ];
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/QF?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/QF')
+        .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(200, melbourneFlightSearchData);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/QF?date=2018-09-02&from=YQY&to=JFK')
+        .get('/code-task/flight_search/QF')
+        .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
 
       // http://node.locomote.com/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK
@@ -1020,43 +1034,53 @@ describe('asyncAirlines', function () {
       // };
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SU?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/SU')
+        .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/SU?date=2018-09-02&from=YQY&to=JFK')
+        .get('/code-task/flight_search/SU')
+        .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/MU?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/MU')
+        .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/MU?date=2018-09-02&from=YQY&to=JFK')
+        .get('/code-task/flight_search/MU')
+        .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/EK?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/EK')
+        .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(400);
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/EK?date=2018-09-02&from=YQY&to=JFK')
+        .get('/code-task/flight_search/EK')
+        .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
 
       nock('http://node.locomote.com')
-        .get('/code-task/flight_search/KE?date=2018-09-02&from=SYD&to=JFK')
+        .get('/code-task/flight_search/KE')
+        .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(400);
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/KE?date=2018-09-02&from=YQY&to=JFK')
+        // .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=SYD&to=JFK')
+        // .query({ date: '2018-09-02', from: 'SYD', to: 'JFK' })
         .reply(400);
 
       nock('http://node.locomote.com')
         .get('/code-task/flight_search/SQ?date=2018-09-02&from=YQY&to=JFK')
+        // .query({ date: '2018-09-02', from: 'YQY', to: 'JFK' })
         .reply(404)
         // .reply(404, [errorMessage]);
     });
@@ -1126,6 +1150,36 @@ describe('asyncAirlines', function () {
 
         done();
       });
+    });
+
+    it('asyncSearchPreamble returns an Object of required search flight data', function (done) {
+      subject.asyncSearchPreamble(params)
+        .then(function (data) {
+          expect(data).toEqual(jasmine.any(Object));
+          done();
+        });
+    });
+
+    it('asyncSearchPreamble returns expected mocked search flight data', function (done) {
+      subject.asyncSearchPreamble(params)
+        .then(function (data) {
+          expect(data.airlines).toEqual([
+            { code: "FB", name: "FooBar" },
+            { code: "BF", name: "BarFoo" },
+            { code: "BB", name: "BazBar" },
+            { code: "SU", name: "Aeroflot" },
+            { code: "MU", name: "China Eastern" },
+            { code: "EK", name: "Emirates" },
+            { code: "KE", name: "Korean Air lines" },
+            { code: "QF", name: "Qantas" },
+            { code: "SQ", name: "Singapore Airlines" }
+          ]);
+          expect(data.fromAirports).toEqual(['SYD', 'YQY']);
+          expect(data.toAirports).toEqual(['JFK']);
+          expect(data.travelDate).toEqual('2018-09-02');
+
+          done();
+        });
     });
 
     it('find mock flight', function (done) {

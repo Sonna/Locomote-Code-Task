@@ -5,11 +5,13 @@
 }
 
 body {
-  font: 13px Helvetica, Arial;
+  background-color: #d7d7d7;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 form {
-  padding: 3px;
+  /*padding: 3px;*/
 }
 
 form label {
@@ -19,4 +21,326 @@ form label {
 form input {
   margin: 10px;
   padding: 10px;
+}
+
+form input[type=submit] {
+  background-color: #ffffff;
+  background-image: none;
+  border-color: #cccccc; /*transparent;*/
+  border-style: solid;
+  border-width: 1px;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.428;
+  padding: 8px 12px;
+}
+@media (min-width: 750px) {
+  form input[type=submit] {
+    /* 95px -35( 13 + 10 + 2 + 10 )px */
+    margin-top: 45px;
+    /*margin-top: 40px;*/
+  }
+}
+form input[type=submit]:hover {
+  background-color: #e6e6e6;
+  border-color: #adadad;
+  color: #333333;
+}
+
+#main {
+  background-color: #FFFFFF;
+  /*margin-right: -15px;*/
+  /*margin-left: -15px;*/
+  padding: 10px;
+  width: 100%;
+}
+#main:before,
+#main:after {
+  display: table;
+  content: " ";
+}
+#main:after {
+  clear: both;
+}
+/* <768px ≥768px ≥992px ≥1200px */
+/*   auto  750px  970px  1170px */
+@media (min-width: 1200px) {
+  #main {
+    margin: 0 auto;
+    width: 1170px;
+  }
+}
+
+#search-form {
+  /*display: table-row;*/
+  margin: 15px;
+}
+#search-form:before,
+#search-form:after {
+  display: table;
+  content: " ";
+}
+#search-form:after {
+  clear: both;
+}
+#search-form .input-group {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+#search-form .input-group label,
+#search-form .input-group input {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+@media (min-width: 750px) {
+  #search-form .input-group {
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 25%;
+  }
+}
+
+.search-box {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.search-results {
+  /*display: table;*/
+  width: 100%;
+}
+
+.search-result {
+  /*clear: both;*/
+  /*display: table-row;*/
+  /*float: left;*/
+  /*margin: 10px;*/
+  padding: 10px;
+  width: 100%;
+}
+.search-result:before,
+.search-result:after {
+  display: table;
+  content: " ";
+}
+.search-result:after {
+  clear: both;
+}
+.search-result + .search-result {
+  border-top-color: #d7d7d7;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: 0;
+}
+
+.search-result .start,
+.search-result .finish {
+  padding-right: 10px;
+  /*width: 33.33333%;*/
+}
+.search-result .start:before {
+  clear: both;
+  color: #d7d7d7;
+  content: ">";
+  font-size: 36px;
+  padding: 10px;
+  padding-left: 120px;
+  position: absolute;
+}
+@media (min-width: 750px) {
+  .search-result .start:before {
+    padding-left: 150px;
+  }
+}
+@media (min-width: 970px) {
+  .search-result .start:before {
+    padding-left: 175px;
+  }
+}
+.search-result .start .airport,
+.search-result .finish .airport {
+  clear: both;
+  float: left;
+}
+.search-result .start .datetime .time,
+.search-result .finish .datetime .time {
+  clear: both;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+}
+.search-result .start .datetime .period,
+.search-result .finish .datetime .period {
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.search-result .start .date,
+.search-result .finish .date {
+  clear: both;
+  float: left;
+}
+
+.search-result .flight-num {
+  display: block;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.search-result .flight-num,
+.search-result .fare {
+  line-height: 50px;
+}
+
+.search-result .fare {
+  font-weight: bold;
+  padding-right: 10px;
+}
+.search-result .fare .price {
+  font-size: 16px;
+}
+.search-result .fare .price {
+  font-size: 24px;
+}
+
+/* 2-columns full width */
+.search-result .start,
+.search-result .finish,
+.search-result .flight-details,
+.search-result .fare {
+  float: left;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  position: relative;
+  width: 50%;
+}
+@media (min-width: 750px) {
+  /* 4-columns full width */
+  .search-result .start,
+  .search-result .finish,
+  .search-result .flight-details,
+  .search-result .fare {
+    float: left;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: 25%;
+  }
+}
+
+/* Style the tab */
+.tab {
+  border-color: #cccccc;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  float: left;
+  font-size: 17px;
+  outline: none;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #dddddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #cccccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  border-color: #cccccc;
+  border-style: solid;
+  border-width: 1px;
+  border-top: none;
+  display: none;
+  padding: 6px 12px;
+}
+
+/* @see
+  - [How To Make a Loader]
+  (https://www.w3schools.com/howto/howto_css_loader.asp)
+*/
+/* Center the loader */
+#loader,
+.loader {
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  top: 50%;
+  height: 120px;
+  height: 150px;
+  left: 50%;
+  margin: -75px 0 0 -75px;
+  position: absolute;
+  width: 120px;
+  width: 150px;
+  z-index: 1;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(  0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 0.5s;
+  animation-name: animatebottom;
+  animation-duration: 0.5s;
+  position: relative;
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom: -100px; opacity: 0 }
+  to   { bottom:    0px; opacity: 1 }
+}
+
+@keyframes animatebottom {
+  from { bottom: -100px; opacity: 0 }
+  to   { bottom:      0; opacity: 1 }
+}
+
+#overlay,
+.overlay {
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  bottom: 0;
+  cursor: pointer; /* Add a pointer on hover */
+  display: block;
+  /* display: none; */ /* Hidden by default */
+  height: 100%; /* Full height (cover the whole page) */
+  left: 0;
+  position: fixed; /* Sit on top of the page content */
+  right: 0;
+  top: 0;
+  width: 100%; /* Full width (cover the whole page) */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 }

@@ -1,7 +1,7 @@
 {
-  "name": "locomotive_code_task",
+  "name": "locomote_code_task",
   "version": "1.0.0",
-  "description": "A Flight Search interface for the Locomotive code task.",
+  "description": "A Flight Search interface for the Locomote code task.",
   "main": "server.js",
   "directories": {
     "doc": "doc"
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git"
+    "url": "git+https://Sonna@bitbucket.org/Sonna/locomote-code-task.git"
   },
   "author": "Alex Sonneveld <alex@sonneveld.com.au>",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme",
+  "homepage": "https://bitbucket.org/Sonna/locomote-code-task#readme",
   "devDependencies": {
     "jasmine": "^2.6.0",
     "jsdom": "^11.0.0",

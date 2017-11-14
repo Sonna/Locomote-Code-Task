@@ -46,7 +46,7 @@ Setup a remote Git repository to backup project files, and added it to the
 current project.
 
 ```console
-    $ git remote add origin https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git
+    $ git remote add origin https://Sonna@bitbucket.org/Sonna/locomote-code-task.git
     $ git push -u origin master
 ```
 
@@ -65,21 +65,21 @@ Initialize the Node project using NPM
     save it as a dependency in the package.json file.
 
     Press ^C at any time to quit.
-    name: (locomotive_code_task)
+    name: (locomote_code_task)
     version: (1.0.0)
-    description: A Flight Search interface for the Locomotive code task.
+    description: A Flight Search interface for the locomote code task.
     entry point: (index.js)
     test command:
-    git repository: (https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git)
+    git repository: (https://Sonna@bitbucket.org/Sonna/locomote-code-task.git)
     keywords:
     author: Alex Sonneveld <alex@sonneveld.com.au>
     license: (ISC)
-    About to write to /Users/Sonna/Projects/javascript/locomotive_code_task/package.json:
+    About to write to /Users/Sonna/Projects/javascript/locomote_code_task/package.json:
 
     {
-      "name": "locomotive_code_task",
+      "name": "locomote_code_task",
       "version": "1.0.0",
-      "description": "A Flight Search interface for the Locomotive code task.",
+      "description": "A Flight Search interface for the locomote code task.",
       "main": "index.js",
       "directories": {
         "doc": "doc"
@@ -89,11 +89,11 @@ Initialize the Node project using NPM
       },
       "repository": {
         "type": "git",
-        "url": "git+https://Sonna@bitbucket.org/Sonna/locomotive-code-task.git"
+        "url": "git+https://Sonna@bitbucket.org/Sonna/locomote-code-task.git"
       },
       "author": "Alex Sonneveld <alex@sonneveld.com.au>",
       "license": "ISC",
-      "homepage": "https://bitbucket.org/Sonna/locomotive-code-task#readme"
+      "homepage": "https://bitbucket.org/Sonna/locomote-code-task#readme"
     }
 
 
@@ -106,7 +106,7 @@ workflow
 ```console
     $ npm install jasmine-node --save-dev
 
-    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    locomote_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomote_code_task
     └─┬ jasmine@2.6.0
       ├── exit@0.1.2
       ├─┬ glob@7.1.2
@@ -152,7 +152,7 @@ Ensure that the test runner is setup correctly and run without tests
 ```console
     $ npm test
 
-    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > locomote_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomote_code_task
     > jasmine
 
     Started
@@ -177,7 +177,7 @@ Update the README to explain how to use this project and set it up with its
 dependencies (this could be assumed, but should be thorough rather than assume).
 
 Add Request Node library to handle requests against our application during tests
-and the external Locomotive API.
+and the external locomote API.
 
 ```console
     $ npm install request --save
@@ -245,7 +245,7 @@ and `/search` endpoints.
 ```
     $ npm install express --save
 
-    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    locomote_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomote_code_task
     └─┬ express@4.15.3
       ├─┬ accepts@1.3.3
       │ └── negotiator@0.6.1
@@ -340,7 +340,7 @@ Run all tests to ensure they work
 ```console
     $ npm test
 
-    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > locomote_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomote_code_task
     > jasmine
 
     Started
@@ -415,7 +415,7 @@ Esnure it fails
 ```console
     $ npm test
 
-    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > locomote_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomote_code_task
     > jasmine
 
     Started
@@ -427,8 +427,8 @@ Esnure it fails
         Expected 404 to be 200.
       Stack:
         Error: Expected 404 to be 200.
-            at Request._callback (/Users/Sonna/Projects/javascript/locomotive_code_task/spec/serverSpec.js:22:37)
-            at Request.self.callback (/Users/Sonna/Projects/javascript/locomotive_code_task/node_modules/request/request.js:188:22)
+            at Request._callback (/Users/Sonna/Projects/javascript/locomote_code_task/spec/serverSpec.js:22:37)
+            at Request.self.callback (/Users/Sonna/Projects/javascript/locomote_code_task/node_modules/request/request.js:188:22)
             at emitTwo (events.js:106:13)
             at Request.emit (events.js:191:7)
 
@@ -454,7 +454,7 @@ Run tests to ensure it passes
 ```console
     npm test
 
-    > locomotive_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomotive_code_task
+    > locomote_code_task@1.0.0 test /Users/Sonna/Projects/javascript/locomote_code_task
     > jasmine
 
     Started
@@ -478,7 +478,7 @@ app.get('/airlines', function (req, res) {
 ```
 
 Begin building a Flight API object to consume external URL requests from the
-Locomotive Code Task application and to keep it separate from the application
+locomote Code Task application and to keep it separate from the application
 server main body / routing code.
 
 Install Nock Node library as another development / test dependency to Mock the
@@ -487,7 +487,7 @@ external HTTP Requests, for the purpose of the making external Flight API calls.
 ```console
     $ npm install --save-dev nock
 
-    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    locomote_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomote_code_task
     └─┬ nock@9.0.13
       ├─┬ chai@3.5.0
       │ ├── assertion-error@1.0.2
@@ -507,7 +507,7 @@ and direct although potentially requires more maintenance._
 
 Create an appropriate test to build a new instance of the FlightAPI that
 responds to an `airlines` method that returns an array of airlines, which should
-match the Mock data that intercepts the Locomotive code task airlines URL;
+match the Mock data that intercepts the locomote code task airlines URL;
 `'http://node.locomote.com/code-task/airlines'`
 
 ```javascript
@@ -564,7 +564,7 @@ describe('FlightAPI library', function () {
 ```
 
 Create the corresponding FlightAPI class to fulfil the above specification tests
-and generates a collection of airlines data from the external Locomotive API
+and generates a collection of airlines data from the external locomote API
 
 ```javascript
 const request = require('request');
@@ -633,6 +633,6 @@ module.exports = FlightAPI;
 ```
     $ npm install --save-dev xmlhttprequest
 
-    locomotive_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomotive_code_task
+    locomote_code_task@1.0.0 /Users/Sonna/Projects/javascript/locomote_code_task
     └── xmlhttprequest@1.8.0
 ```
