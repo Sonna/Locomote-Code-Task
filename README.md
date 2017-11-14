@@ -2,11 +2,29 @@
 
 ## Usage
 
-[Install Node][Install Node] and its dependencies, to setup project:
+[Install Node][Install Node] and its dependencies.
+
+Setup project:
 
 ```console
   $ npm install
 ```
+
+Run the poject server
+
+```console
+  $ npm start
+```
+
+_Or_
+
+Simply run the start script
+
+```console
+  $ ./start.sh
+```
+
+Visit `[http://localhost:3000/](http://localhost:3000/)'
 
 <!-- References -->
 [Install Node]: https://nodejs.org/en/download/ "Download | Node.js"
