@@ -25,30 +25,32 @@ When the user clicks search, your front end code needs to make an AJAX request
 to a small backend server you will build, which will in turn contact the Flight
 API.
 
-### Usability
+### Returning home
 
-Flights may be cheaper on some days than others; If the user picks
-**`2016-09-10`** as their travel date, then query their chosen date and nearby
-dates (+/- 2):
+Most travellers want to return home.
 
-`2016-09-08`, `2016-09-09`, **`2016-09-10`**, `2016-09-11`, `2016-09-12`
+Demonstrate the reusability of your UI components by adding a second search
+interface on the same page as the first one.
 
-A great way to present all five days of results would be by using tabs.
+The traveller would use this to find a return flight home.
+
+Both search interfaces should be able to work concurrently & independently of
+each other.
 
 You don't need to present all information returned by the flight search.
+
 Show what you think is relevant to the user.
 
-Important:
-  - Don't use any frameworks based on React, Angular or similar.
+### Important
+- Don't use any frameworks like Angular, Vuejs, Redux, React or similar. Build
+  from the ground up.
+  You may use utility libraries like jQuery, Bootstrap, lodash, moment.js,
+  autocomplete or similar.
 
-    You may however use utility libraries like jQuery/UI, Bootstrap, lodash &
-    moment.js.
+- Vanilla Javascript, Typescript & Coffeescript can all be used.
 
-  - We use coffeescript, however you can also use plain javascript or
-    typescript.
-
-  - Do not render HTML on the server; send data to the frontend and render it
-    there.
+- Your solution will be tested in ES6+ browsers like Chrome & Firefox. No need
+  for legacy browser support.
 
 ## Back end (part 2)
 
@@ -69,11 +71,11 @@ Build a back end server which has three endpoints:
     + `/airlines` to get a list of airlines
     + `/flight_search/:airline_code` to search for flights for each airline
 
-    The list of airlines may change, so caching is not an option.
-
 Important:
-  Stick to small frameworks like expressjs, koa, sinatra, tornado or similar.
-  We use node.js, however you're free to use ruby, python or similar.
+  Stick to small frameworks like expressjs, koa, or similar.
+  The backend should be built with nodejs 8 or above.
+  The list of airlines & airports may change, so caching or storing these is not
+  an option.
 
 ## Flight API (provided)
 
@@ -120,12 +122,13 @@ It has three endpoints:
 - Documentation is not necessary; try to write self documenting code & document
   only where required.
 
-- We're looking for well structured & architected code (but please don't build
-  something turing complete).
+- We're looking for well structured & reusable code.
 
 ### Submission
 
 Please send us a zip/gz/link to repository with your solution.
 
-Provide a `start.sh` script in the root folder which will perform all required
-package installation, and launch the server on port 3000.
+Provide a `start.sh` or `start.bat` script in the root folder which will perform
+all required package installation, and launch the server on port 3000.
+
+Entries will be tested against node version 8 or newer.
