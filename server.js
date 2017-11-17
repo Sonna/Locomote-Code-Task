@@ -99,7 +99,7 @@ function serveFile(request, response) {
   });
 }
 
-http.createServer(function (request, response) {
+function router(request, response) {
   const req = url.parse(request.url, true);
   const service = routes[req.pathname];
 
@@ -108,6 +108,8 @@ http.createServer(function (request, response) {
   } else {
     serveFile(request, response);
   }
-}).listen(3000);
+}
+
+http.createServer(router).listen(3000);
 
 console.log('Server running at http://127.0.0.1:3000/');
