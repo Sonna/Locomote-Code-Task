@@ -6,46 +6,52 @@ const FlightAPI = require('./lib/services/FlightAPI');
 
 const api = new FlightAPI();
 
-const serviceURLs = {
+// Airlines Controller
 // Lists all available airlines from the Flight API.
-  '/airlines': function(request, response) {
-    api.airlines(function (error, data) {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify(data), 'utf-8');
-    });
-  },
+function airlineList(request, response) {
+  api.airlines(function (error, data) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify(data), 'utf-8');
+  });
+}
 
+// Airports Controller
 // Lists all matching airports from the Flight API.
-  '/airports': function(request, response) {
-    // const query = request.query.q;
-    const q = url.parse(request.url, true).query.q;
+function airportsList(request, response) {
+  const q = url.parse(request.url, true).query.q;
 
-    api.airports(q, function (error, data) {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify(data), 'utf-8');
-    });
-  },
+  api.airports(q, function (error, data) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify(data), 'utf-8');
+  });
+}
+
+// Search Controller
 // Lists all matching airports from the Flight API.
+function searchCreate(request, response) {
+  const q = url.parse(request.url, true).query;
+  // Strong parameters / filtered parameters
+  const params = {
+    date: q.date,
+    from: q.from,
+    to: q.to
+  };
 
-  '/search': function(request, response) {
-    const q = url.parse(request.url, true).query;
-    // Strong parameters / filtered parameters
-    const params = {
-      date: q.date,
-      from: q.from,
-      to: q.to
-    };
+  api.search(params, function (error, data) {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify(data), 'utf-8');
+  });
+}
 
-    api.search(params, function (error, data) {
-      response.writeHead(200, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify(data), 'utf-8');
-    });
-  }
+const routes = {
+  '/airlines': airlineList,
+  '/airports': airportsList,
+  '/search': searchCreate
 }
 
 http.createServer(function (request, response) {
   const req = url.parse(request.url, true);
-  const service = serviceURLs[req.pathname];
+  const service = routes[req.pathname];
 
   if(service != null) {
     service(request, response);
