@@ -1,38 +1,8 @@
-const express = require('express');
-const FlightAPI = require('./lib/services/FlightAPI');
+const http = require('http');
+const Router = require('./lib/Router');
 
-const app = express();
-const api = new FlightAPI();
+const router = new Router();
 
-app.use(express.static('public'));
+http.createServer(router).listen(3000);
 
-// Lists all available airlines from the Flight API.
-app.get('/airlines', function (req, res) {
-  api.airlines(function (error, data) {
-    res.status(200).json(data);
-  });
-})
-
-// Lists all matching airports from the Flight API.
-app.get('/airports', function (req, res) {
-  let query = req.query.q;
-
-  api.airports(query, function (error, data) {
-    res.status(200).json(data);
-  });
-})
-
-// Lists all matching airports from the Flight API.
-app.get('/search', function (req, res) {
-  let params = {
-    date: req.query.date,
-    from: req.query.from,
-    to: req.query.to
-  };
-
-  api.search(params, function (error, data) {
-    res.status(200).json(data);
-  });
-})
-
-app.listen(3000);
+console.log('Server running at http://127.0.0.1:3000/');
