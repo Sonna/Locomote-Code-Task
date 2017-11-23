@@ -151,7 +151,7 @@ describe('FlightAPI library', function () {
     });
   });
 
-describe('asyncAirlines', function () {
+  describe('asyncAirlines', function () {
     beforeEach(function () {
       const airlinesData = [
         { code: "FB", name: "FooBar" },
@@ -519,7 +519,7 @@ describe('asyncAirlines', function () {
             latitude: -33.946111,
             longitude: 151.177222,
             stateCode: "NS",
-          timeZone: "Australia/Sydney"
+            timeZone: "Australia/Sydney"
           },
           finish: {
             dateTime: "2018-09-03T05:59:00-04:00",
