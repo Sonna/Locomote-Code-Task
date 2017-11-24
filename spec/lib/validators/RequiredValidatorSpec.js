@@ -17,7 +17,7 @@ describe('RequiredValidator validate', function () {
     context.errors = {};
   });
 
-  it('returns false when value is missing', function (done) {
+  it('returns error message when value is missing', function (done) {
     describedClass.validate(context, property, nilValue);
     expect(context.errors[property])
       .toEqual('foo is required (cannot be blank)');
@@ -25,7 +25,7 @@ describe('RequiredValidator validate', function () {
     done();
   });
 
-  it('returns false when value is empty', function (done) {
+  it('returns error message when value is empty', function (done) {
     describedClass.validate(context, property, emptyValue);
     expect(context.errors[property])
       .toEqual('foo is required (cannot be blank)');
@@ -33,7 +33,7 @@ describe('RequiredValidator validate', function () {
     done();
   });
 
-  it('returns true when value is not empty', function (done) {
+  it('no error messages when value is not empty', function (done) {
     describedClass.validate(context, property, wholeValue);
     expect(context.errors[property]).toEqual(undefined);
     expect(Object.keys(context.errors).length).toEqual(0);
