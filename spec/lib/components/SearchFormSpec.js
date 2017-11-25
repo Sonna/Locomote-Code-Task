@@ -36,15 +36,15 @@ describe('SearchForm component', function () {
         '<form id="search-form">' +
           '<ul class="form-errors"></ul>' +
           '<div class="input-group">' +
-            '<label for="from">From location</label>' +
+            '<label for="from">From location<abbr title="required">*</abbr></label>' +
             '<input type="text" name="from" value="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<label for="to">To location</label>' +
+            '<label for="to">To location<abbr title="required">*</abbr></label>' +
             '<input type="text" name="to" value="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<label for="travel_date">Travel date</label>' +
+            '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
             '<input type="text" name="travel_date" value="">' +
           '</div>' +
           '<div class="input-group">' +
@@ -64,16 +64,16 @@ describe('SearchForm component', function () {
         '<form id="search-form">' +
           '<ul class="form-errors"></ul>' +
           '<div class="input-group">' +
-            '<label for="from">From location</label>' +
-            '<input type="text" name="from" value="" disabled="">' +
+            '<label for="from">From location<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="from" value="" required="" disabled="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<label for="to">To location</label>' +
-            '<input type="text" name="to" value="" disabled="">' +
+            '<label for="to">To location<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="to" value="" required="" disabled="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<label for="travel_date">Travel date</label>' +
-            '<input type="text" name="travel_date" value="" disabled="">' +
+            '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="travel_date" value="" required="" disabled="">' +
           '</div>' +
           '<div class="input-group">' +
             '<input type="submit" name="submit" value="Search" disabled="">' +

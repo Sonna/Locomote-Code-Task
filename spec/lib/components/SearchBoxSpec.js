@@ -72,15 +72,15 @@ describe('SearchBox component', function () {
           '<form id="search-form">' +
             '<ul class="form-errors"></ul>' +
             '<div class="input-group">' +
-              '<label for="from">From location</label>' +
+              '<label for="from">From location<abbr title="required">*</abbr></label>' +
               '<input type="text" name="from" value="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="to">To location</label>' +
+              '<label for="to">To location<abbr title="required">*</abbr></label>' +
               '<input type="text" name="to" value="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="travel_date">Travel date</label>' +
+              '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
               '<input type="text" name="travel_date" value="">' +
             '</div>' +
             '<div class="input-group">' +
@@ -622,15 +622,15 @@ describe('SearchBox component', function () {
           '<form id="search-form">' +
             '<ul class="form-errors"></ul>' +
             '<div class="input-group">' +
-              '<label for="from">From location</label>' +
+              '<label for="from">From location<abbr title="required">*</abbr></label>' +
               '<input type="text" name="from" value="FooSydney">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="to">To location</label>' +
+              '<label for="to">To location<abbr title="required">*</abbr></label>' +
               '<input type="text" name="to" value="FooMelbourne">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="travel_date">Travel date</label>' +
+              '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
               '<input type="text" name="travel_date" value="2020-10-22">' +
             '</div>' +
             '<div class="input-group">' +
@@ -659,15 +659,15 @@ describe('SearchBox component', function () {
               '<form id="search-form">' +
                 '<ul class="form-errors"></ul>' +
                 '<div class="input-group">' +
-                  '<label for="from">From location</label>' +
+                  '<label for="from">From location<abbr title="required">*</abbr></label>' +
                   '<input type="text" name="from" value="FooSydney">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="to">To location</label>' +
+                  '<label for="to">To location<abbr title="required">*</abbr></label>' +
                   '<input type="text" name="to" value="FooMelbourne">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="travel_date">Travel date</label>' +
+                  '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
                   '<input type="text" name="travel_date" value="2020-10-22">' +
                 '</div>' +
                 '<div class="input-group">' +
@@ -685,15 +685,15 @@ describe('SearchBox component', function () {
               '<div id="loader" style="display: none;"></div>' +
               '<form id="search-form">' +
                 '<div class="input-group">' +
-                  '<label for="from">From location</label>' +
+                  '<label for="from">From location<abbr title="required">*</abbr></label>' +
                   '<input type="text" name="from" value="FooSydney">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="to">To location</label>' +
+                  '<label for="to">To location<abbr title="required">*</abbr></label>' +
                   '<input type="text" name="to" value="FooMelbourne">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="travel_date">Travel date</label>' +
+                  '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
                   '<input type="text" name="travel_date" value="2020-10-22">' +
                 '</div>' +
                 '<div class="input-group">' +
