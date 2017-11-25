@@ -19,8 +19,8 @@ describe('SearchForm component', function () {
       done();
     });
 
-    it('has internal findSearchResults function', function (done) {
-      expect(subject.props.findSearchResults).toEqual(jasmine.any(Function));
+    it('has internal handleSubmit function', function (done) {
+      expect(subject.props.handleSubmit).toEqual(jasmine.any(Function));
       done();
     });
   });
@@ -103,7 +103,7 @@ describe('SearchForm component', function () {
         }
       };
 
-      const submitSubject = new describedClass({ findSearchResults: find });
+      const submitSubject = new describedClass({ handleSubmit: find });
       submitSubject._handleSubmit(submitEvent);
 
       expect(result).toEqual([1, '2', '2017-06-13']);
