@@ -24,6 +24,7 @@ describe('SearchForm component', function () {
     it('render outerHTML', function (done) {
       expect(subject.render().outerHTML).toEqual(
         '<form id="search-form">' +
+          '<ul class="form-errors"></ul>' +
           '<div class="input-group">' +
             '<label for="from">From location</label>' +
             '<input type="text" name="from" value="">' +

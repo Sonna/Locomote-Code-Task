@@ -70,6 +70,7 @@ describe('SearchBox component', function () {
         '<div class="search-box">' +
           '<div id="loader" style="display: none;"></div>' +
           '<form id="search-form">' +
+            '<ul class="form-errors"></ul>' +
             '<div class="input-group">' +
               '<label for="from">From location</label>' +
               '<input type="text" name="from" value="">' +
@@ -619,6 +620,7 @@ describe('SearchBox component', function () {
         '<div class="search-box">' +
           '<div id="loader" style="display: none;"></div>' +
           '<form id="search-form">' +
+            '<ul class="form-errors"></ul>' +
             '<div class="input-group">' +
               '<label for="from">From location</label>' +
               '<input type="text" name="from" value="FooSydney">' +
@@ -655,6 +657,7 @@ describe('SearchBox component', function () {
             '<div class="search-box">' +
               '<div id="loader" style="display: none;"></div>' +
               '<form id="search-form">' +
+                '<ul class="form-errors"></ul>' +
                 '<div class="input-group">' +
                   '<label for="from">From location</label>' +
                   '<input type="text" name="from" value="FooSydney">' +
