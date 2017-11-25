@@ -37,15 +37,15 @@ describe('SearchForm component', function () {
           '<ul class="form-errors"></ul>' +
           '<div class="input-group">' +
             '<label for="from">From location<abbr title="required">*</abbr></label>' +
-            '<input type="text" name="from" value="">' +
+            '<input type="text" name="from" value="" required="">' +
           '</div>' +
           '<div class="input-group">' +
             '<label for="to">To location<abbr title="required">*</abbr></label>' +
-            '<input type="text" name="to" value="">' +
+            '<input type="text" name="to" value="" required="">' +
           '</div>' +
           '<div class="input-group">' +
             '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
-            '<input type="text" name="travel_date" value="">' +
+            '<input type="text" name="travel_date" value="" required="">' +
           '</div>' +
           '<div class="input-group">' +
             '<input type="submit" name="submit" value="Search">' +
