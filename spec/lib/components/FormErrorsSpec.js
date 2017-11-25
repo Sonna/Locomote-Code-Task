@@ -1,6 +1,6 @@
-const describedClass = require('../../../lib/components/FormErrorsComponent');
+const describedClass = require('../../../lib/components/FormErrors');
 
-describe('FormErrorsComponent component', function () {
+describe('FormErrors component', function () {
   describe('properties', function () {
     const subject = new describedClass();
 
