@@ -9,6 +9,16 @@ describe('SearchForm component', function () {
       done();
     });
 
+    it('has internal disabled setting', function (done) {
+      expect(subject.props.disabled).toEqual(jasmine.any(Boolean));
+      done();
+    });
+
+    it('has internal errors object', function (done) {
+      expect(subject.props.errors).toEqual(jasmine.any(Object));
+      done();
+    });
+
     it('has internal findSearchResults function', function (done) {
       expect(subject.props.findSearchResults).toEqual(jasmine.any(Function));
       done();
@@ -39,6 +49,34 @@ describe('SearchForm component', function () {
           '</div>' +
           '<div class="input-group">' +
             '<input type="submit" value="Search">' +
+          '</div>' +
+        '</form>'
+      );
+      done();
+    });
+
+    it('renders form with disabled inputs when disabled', function (done) {
+      const disabledSubject = new describedClass({
+        disabled: true
+      });
+
+      expect(disabledSubject.render().outerHTML).toEqual(
+        '<form id="search-form">' +
+          '<ul class="form-errors"></ul>' +
+          '<div class="input-group">' +
+            '<label for="from">From location</label>' +
+            '<input type="text" name="from" value="" disabled="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="to">To location</label>' +
+            '<input type="text" name="to" value="" disabled="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="travel_date">Travel date</label>' +
+            '<input type="text" name="travel_date" value="" disabled="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<input type="submit" value="Search" disabled="">' +
           '</div>' +
         '</form>'
       );
