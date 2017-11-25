@@ -9,8 +9,18 @@ describe('SearchForm component', function () {
       done();
     });
 
-    it('has internal findSearchResults function', function (done) {
-      expect(subject.props.findSearchResults).toEqual(jasmine.any(Function));
+    it('has internal disabled setting', function (done) {
+      expect(subject.props.disabled).toEqual(jasmine.any(Boolean));
+      done();
+    });
+
+    it('has internal errors object', function (done) {
+      expect(subject.props.errors).toEqual(jasmine.any(Object));
+      done();
+    });
+
+    it('has internal handleSubmit function', function (done) {
+      expect(subject.props.handleSubmit).toEqual(jasmine.any(Function));
       done();
     });
   });
@@ -24,20 +34,49 @@ describe('SearchForm component', function () {
     it('render outerHTML', function (done) {
       expect(subject.render().outerHTML).toEqual(
         '<form id="search-form">' +
+          '<ul class="form-errors"></ul>' +
           '<div class="input-group">' +
-            '<label for="from">From location</label>' +
-            '<input type="text" name="from" value="">' +
+            '<label for="from">From location<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="from" value="" required="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<label for="to">To location</label>' +
-            '<input type="text" name="to" value="">' +
+            '<label for="to">To location<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="to" value="" required="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<label for="travel_date">Travel date</label>' +
-            '<input type="text" name="travel_date" value="">' +
+            '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="travel_date" value="" required="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<input type="submit" value="Search">' +
+            '<input type="submit" name="submit" value="Search">' +
+          '</div>' +
+        '</form>'
+      );
+      done();
+    });
+
+    it('renders form with disabled inputs when disabled', function (done) {
+      const disabledSubject = new describedClass({
+        disabled: true
+      });
+
+      expect(disabledSubject.render().outerHTML).toEqual(
+        '<form id="search-form">' +
+          '<ul class="form-errors"></ul>' +
+          '<div class="input-group">' +
+            '<label for="from">From location<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="from" value="" required="" disabled="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="to">To location<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="to" value="" required="" disabled="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+            '<input type="text" name="travel_date" value="" required="" disabled="">' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<input type="submit" name="submit" value="Search" disabled="">' +
           '</div>' +
         '</form>'
       );
@@ -64,7 +103,7 @@ describe('SearchForm component', function () {
         }
       };
 
-      const submitSubject = new describedClass({ findSearchResults: find });
+      const submitSubject = new describedClass({ handleSubmit: find });
       submitSubject._handleSubmit(submitEvent);
 
       expect(result).toEqual([1, '2', '2017-06-13']);

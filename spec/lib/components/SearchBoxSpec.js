@@ -70,20 +70,21 @@ describe('SearchBox component', function () {
         '<div class="search-box">' +
           '<div id="loader" style="display: none;"></div>' +
           '<form id="search-form">' +
+            '<ul class="form-errors"></ul>' +
             '<div class="input-group">' +
-              '<label for="from">From location</label>' +
-              '<input type="text" name="from" value="">' +
+              '<label for="from">From location<abbr title="required">*</abbr></label>' +
+              '<input type="text" name="from" value="" required="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="to">To location</label>' +
-              '<input type="text" name="to" value="">' +
+              '<label for="to">To location<abbr title="required">*</abbr></label>' +
+              '<input type="text" name="to" value="" required="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="travel_date">Travel date</label>' +
-              '<input type="text" name="travel_date" value="">' +
+              '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+              '<input type="text" name="travel_date" value="" required="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<input type="submit" value="Search">' +
+              '<input type="submit" name="submit" value="Search">' +
             '</div>' +
           '</form>' +
           '<section class="search-results">' +
@@ -619,20 +620,21 @@ describe('SearchBox component', function () {
         '<div class="search-box">' +
           '<div id="loader" style="display: none;"></div>' +
           '<form id="search-form">' +
+            '<ul class="form-errors"></ul>' +
             '<div class="input-group">' +
-              '<label for="from">From location</label>' +
-              '<input type="text" name="from" value="FooSydney">' +
+              '<label for="from">From location<abbr title="required">*</abbr></label>' +
+              '<input type="text" name="from" value="FooSydney" required="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="to">To location</label>' +
-              '<input type="text" name="to" value="FooMelbourne">' +
+              '<label for="to">To location<abbr title="required">*</abbr></label>' +
+              '<input type="text" name="to" value="FooMelbourne" required="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<label for="travel_date">Travel date</label>' +
-              '<input type="text" name="travel_date" value="2020-10-22">' +
+              '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+              '<input type="text" name="travel_date" value="2020-10-22" required="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<input type="submit" value="Search">' +
+              '<input type="submit" name="submit" value="Search">' +
             '</div>' +
           '</form>' +
           '<section class="search-results">' +
@@ -655,20 +657,21 @@ describe('SearchBox component', function () {
             '<div class="search-box">' +
               '<div id="loader" style="display: none;"></div>' +
               '<form id="search-form">' +
+                '<ul class="form-errors"></ul>' +
                 '<div class="input-group">' +
-                  '<label for="from">From location</label>' +
-                  '<input type="text" name="from" value="FooSydney">' +
+                  '<label for="from">From location<abbr title="required">*</abbr></label>' +
+                  '<input type="text" name="from" value="FooSydney" required="">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="to">To location</label>' +
-                  '<input type="text" name="to" value="FooMelbourne">' +
+                  '<label for="to">To location<abbr title="required">*</abbr></label>' +
+                  '<input type="text" name="to" value="FooMelbourne" required="">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="travel_date">Travel date</label>' +
-                  '<input type="text" name="travel_date" value="2020-10-22">' +
+                  '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+                  '<input type="text" name="travel_date" value="2020-10-22" required="">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<input type="submit" value="Search">' +
+                  '<input type="submit" name="submit" value="Search">' +
                 '</div>' +
               '</form>' +
               '<section class="search-results">' +
@@ -682,16 +685,16 @@ describe('SearchBox component', function () {
               '<div id="loader" style="display: none;"></div>' +
               '<form id="search-form">' +
                 '<div class="input-group">' +
-                  '<label for="from">From location</label>' +
-                  '<input type="text" name="from" value="FooSydney">' +
+                  '<label for="from">From location<abbr title="required">*</abbr></label>' +
+                  '<input type="text" name="from" value="FooSydney" required="">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="to">To location</label>' +
-                  '<input type="text" name="to" value="FooMelbourne">' +
+                  '<label for="to">To location<abbr title="required">*</abbr></label>' +
+                  '<input type="text" name="to" value="FooMelbourne" required="">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<label for="travel_date">Travel date</label>' +
-                  '<input type="text" name="travel_date" value="2020-10-22">' +
+                  '<label for="travel_date">Travel date<abbr title="required">*</abbr></label>' +
+                  '<input type="text" name="travel_date" value="2020-10-22" required="">' +
                 '</div>' +
                 '<div class="input-group">' +
                   '<input type="submit" value="Search">' +
@@ -1010,19 +1013,19 @@ describe('SearchBox component', function () {
       });
     });
 
-    it('_getResults (before AJAX request)', function (done) {
+    it('_buildSearchResults (before AJAX request)', function (done) {
       const _subject = new describedClass();
-      const results = _subject._getResults();
+      const results = _subject._buildSearchResults();
 
       expect(results).toEqual(jasmine.any(NullComponent));
       done();
     });
 
-    it('_getResults (after AJAX request with no params)', function (done) {
+    it('_buildSearchResults (after AJAX request with no params)', function (done) {
       const _subject = new describedClass();
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-        const results = component._getResults();
+        const results = component._buildSearchResults();
         expect([
           jasmine.any(NullSearchResult),
           jasmine.any(NullComponent)
@@ -1030,17 +1033,17 @@ describe('SearchBox component', function () {
       };
 
       // _subject._searchFromServer('', '', '', function(_error, searchbox) {
-        // var results = searchbox._getResults();
+        // var results = searchbox._buildSearchResults();
         // expect(results).toEqual(jasmine.any(NullSearchResult));
         done();
       // });
     });
 
-    it('_getResults (after AJAX request with with params, but no results)', function (done) {
+    it('_buildSearchResults (after AJAX request with with params, but no results)', function (done) {
       const _subject = new describedClass();
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-         const results = component._getResults();
+         const results = component._buildSearchResults();
         expect([
           jasmine.any(NullComponent),
           jasmine.any(NullSearchResult)
@@ -1053,13 +1056,13 @@ describe('SearchBox component', function () {
         // });
     });
 
-    it('_getResults (after AJAX request with params)', function (done) {
+    it('_buildSearchResults (after AJAX request with params)', function (done) {
       const _subject = new describedClass({
         from: "FooSydney", to: "FooMelbourne", travelDate: "2020-10-22"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-        const results = component._getResults();
+        const results = component._buildSearchResults();
         expect([
           jasmine.any(NullComponent),
           jasmine.any(NullSearchResult),
