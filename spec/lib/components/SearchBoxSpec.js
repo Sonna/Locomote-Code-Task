@@ -84,7 +84,7 @@ describe('SearchBox component', function () {
               '<input type="text" name="travel_date" value="">' +
             '</div>' +
             '<div class="input-group">' +
-              '<input type="submit" value="Search">' +
+              '<input type="submit" name="submit" value="Search">' +
             '</div>' +
           '</form>' +
           '<section class="search-results">' +
@@ -634,7 +634,7 @@ describe('SearchBox component', function () {
               '<input type="text" name="travel_date" value="2020-10-22">' +
             '</div>' +
             '<div class="input-group">' +
-              '<input type="submit" value="Search">' +
+              '<input type="submit" name="submit" value="Search">' +
             '</div>' +
           '</form>' +
           '<section class="search-results">' +
@@ -671,7 +671,7 @@ describe('SearchBox component', function () {
                   '<input type="text" name="travel_date" value="2020-10-22">' +
                 '</div>' +
                 '<div class="input-group">' +
-                  '<input type="submit" value="Search">' +
+                  '<input type="submit" name="submit" value="Search">' +
                 '</div>' +
               '</form>' +
               '<section class="search-results">' +

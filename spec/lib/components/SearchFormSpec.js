@@ -48,7 +48,7 @@ describe('SearchForm component', function () {
             '<input type="text" name="travel_date" value="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<input type="submit" value="Search">' +
+            '<input type="submit" name="submit" value="Search">' +
           '</div>' +
         '</form>'
       );
@@ -76,7 +76,7 @@ describe('SearchForm component', function () {
             '<input type="text" name="travel_date" value="" disabled="">' +
           '</div>' +
           '<div class="input-group">' +
-            '<input type="submit" value="Search" disabled="">' +
+            '<input type="submit" name="submit" value="Search" disabled="">' +
           '</div>' +
         '</form>'
       );
