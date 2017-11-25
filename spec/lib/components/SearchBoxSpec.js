@@ -1013,19 +1013,19 @@ describe('SearchBox component', function () {
       });
     });
 
-    it('_getResults (before AJAX request)', function (done) {
+    it('_buildSearchResults (before AJAX request)', function (done) {
       const _subject = new describedClass();
-      const results = _subject._getResults();
+      const results = _subject._buildSearchResults();
 
       expect(results).toEqual(jasmine.any(NullComponent));
       done();
     });
 
-    it('_getResults (after AJAX request with no params)', function (done) {
+    it('_buildSearchResults (after AJAX request with no params)', function (done) {
       const _subject = new describedClass();
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-        const results = component._getResults();
+        const results = component._buildSearchResults();
         expect([
           jasmine.any(NullSearchResult),
           jasmine.any(NullComponent)
@@ -1033,17 +1033,17 @@ describe('SearchBox component', function () {
       };
 
       // _subject._searchFromServer('', '', '', function(_error, searchbox) {
-        // var results = searchbox._getResults();
+        // var results = searchbox._buildSearchResults();
         // expect(results).toEqual(jasmine.any(NullSearchResult));
         done();
       // });
     });
 
-    it('_getResults (after AJAX request with with params, but no results)', function (done) {
+    it('_buildSearchResults (after AJAX request with with params, but no results)', function (done) {
       const _subject = new describedClass();
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-         const results = component._getResults();
+         const results = component._buildSearchResults();
         expect([
           jasmine.any(NullComponent),
           jasmine.any(NullSearchResult)
@@ -1056,13 +1056,13 @@ describe('SearchBox component', function () {
         // });
     });
 
-    it('_getResults (after AJAX request with params)', function (done) {
+    it('_buildSearchResults (after AJAX request with params)', function (done) {
       const _subject = new describedClass({
         from: "FooSydney", to: "FooMelbourne", travelDate: "2020-10-22"
       });
 
       _subject.reRenderCallback = function expectedResults(component, _) {
-        const results = component._getResults();
+        const results = component._buildSearchResults();
         expect([
           jasmine.any(NullComponent),
           jasmine.any(NullSearchResult),
