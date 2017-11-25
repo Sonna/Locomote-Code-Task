@@ -57,5 +57,19 @@ describe('Label component', function () {
       );
       done();
     });
+
+    it('render required Label', function (done) {
+      const requiredSubject = new describedClass({
+        for: 'name', content: 'Full Name', required: true
+      });
+
+      expect(requiredSubject.render().outerHTML).toEqual(
+        '<label for="name">' +
+          'Full Name' +
+          '<abbr title="required">*</abbr>' +
+        '</label>'
+      );
+      done();
+    });
   });
 });
