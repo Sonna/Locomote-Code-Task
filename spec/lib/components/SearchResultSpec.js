@@ -67,10 +67,6 @@ describe('SearchResult component', function () {
       expect(subject.render().outerHTML).toEqual(
         '<article id="" class="flight search-result">' +
           '<section class="start">' +
-            '<span class="airport">' +
-              '<abbr title="">' +
-              '</abbr>' +
-            '</span>' +
             '<time class="datetime" datetime="">' +
             '<span class="time">' +
               '<span class="period">AM</span>' +
@@ -78,11 +74,31 @@ describe('SearchResult component', function () {
             '<span class="date">Invalid Dat</span>' +
             '</time>' +
           '</section>' +
+
+          '<section class="journey">' +
+            '<div class="journey-top">' +
+              '<span class="journey-stop-icon"></span>' +
+              '<span class="journey-stop-line"></span>' +
+              '<span class="journey-stop-icon"></span>' +
+            '</div>' +
+            '<div class="journey-bottom">' +
+              '<span class="airport start">' +
+                '<abbr title="">' +
+                '</abbr>' +
+              '</span>' +
+              '<span class="journey-details">' +
+                '<span class="duration-minimum">0<abbr title="minutes">min</abbr></span>' +
+                '<span class="divider"> / </span>' +
+                '<span class="distance">0<abbr title="meters">m</abbr></span>' +
+              '</span>' +
+              '<span class="airport finish">' +
+                '<abbr title="">' +
+                '</abbr>' +
+              '</span>' +
+            '</div>' +
+          '</section>' +
+
           '<section class="finish">' +
-            '<span class="airport">' +
-              '<abbr title="">' +
-              '</abbr>' +
-            '</span>' +
             '<time class="datetime" datetime="">' +
             '<span class="time">' +
               '<span class="period">AM</span>' +
@@ -96,13 +112,12 @@ describe('SearchResult component', function () {
               '</abbr>' +
               '<span>0</span>' +
             '</span>' +
-            '<span class="duration-minimum">0<abbr title="minutes">min</abbr></span>' +
-            '<span class="divider"> / </span>' +
-            '<span class="distance">0<abbr title="meters">m</abbr></span>' +
           '</section>' +
           '<section class="fare">' +
-            '<span class="currency-symbol">$</span>' +
-            '<span class="price">0.00</span>' +
+            '<a href="#" class="button">' +
+              '<span class="currency-symbol">$</span>' +
+              '<span class="price">0.00</span>' +
+            '</a>' +
           '</section>' +
          '</article>'
       );

@@ -146,7 +146,6 @@ form input[type=submit]:hover {
 .search-result .start:before {
   clear: both;
   color: #d7d7d7;
-  content: ">";
   font-size: 36px;
   padding: 10px;
   padding-left: 120px;
@@ -167,6 +166,17 @@ form input[type=submit]:hover {
   clear: both;
   float: left;
 }
+@media (min-width: 750px) {
+  .search-result .start .datetime {
+    clear: both;
+    float: left;
+  }
+  .search-result .finish .datetime {
+    clear: both;
+    float: right;
+  }
+}
+
 .search-result .start .datetime .time,
 .search-result .finish .datetime .time {
   clear: both;
@@ -182,11 +192,13 @@ form input[type=submit]:hover {
 }
 .search-result .start .date,
 .search-result .finish .date {
+  color: #888888;
   clear: both;
   float: left;
 }
 
 .search-result .flight-num {
+  color: #888888;
   display: block;
   font-weight: bold;
   padding-right: 10px;
@@ -200,6 +212,15 @@ form input[type=submit]:hover {
 .search-result .fare {
   font-weight: bold;
   padding-right: 10px;
+}
+.search-result .fare .button {
+  background-color: #0072EA;
+  color: #FFFFFF;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 16px;
+  text-decoration: none;
 }
 .search-result .fare .price {
   font-size: 16px;
@@ -222,7 +243,7 @@ form input[type=submit]:hover {
   width: 50%;
 }
 @media (min-width: 750px) {
-  /* 4-columns full width */
+  /* 6-columns full width */
   .search-result .start,
   .search-result .finish,
   .search-result .flight-details,
@@ -232,8 +253,85 @@ form input[type=submit]:hover {
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
-    width: 25%;
+    width: 16.666%;
   }
+
+  .search-result .journey {
+    width: 33.333%;
+  }
+}
+/*
+.search-result .journey .journey-bottom,
+.search-result .journey .journey-top {
+  */
+/* hidden on mobile */
+.search-result .journey {
+  display: none;
+  float: left;
+  font-size: 14px;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+}
+@media (min-width: 750px) {
+  /* full width of parent container */
+  .search-result .journey {
+    display: block;
+  }
+}
+
+.search-result .journey .journey-top {
+  padding-top: 18px;
+  text-align: center;
+}
+
+.search-result .journey .journey-bottom {
+  padding-top: 10px;
+}
+
+.search-result .journey .finish,
+.search-result .journey .journey-details,
+.search-result .journey .start {
+  float: left;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  width: 33%;
+}
+
+.search-result .journey .start {
+  /*float: left;*/
+  text-align: left;
+}
+
+.search-result .journey .journey-details {
+  /*float: center;*/
+  text-align: center;
+}
+
+.search-result .journey .finish {
+  /*float: right;*/
+  text-align: right;
+}
+
+.search-result .journey .journey-stop-icon {
+  border-color: #0072EA;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 2px;
+  display: inline-block;
+  height: 8px;
+  margin-left: 2px;
+  width: 8px;
+}
+
+.search-result .journey .journey-stop-line {
+  border-top-color: #999;
+  border-top-style: dashed;
+  border-top-width: 1px;
+  display: inline-block;
+  margin: 0 2px 0 2px;
+  width: 85%;
 }
 
 /* Style the tab */
@@ -367,13 +465,13 @@ form input[type=submit]:hover {
 
 .paginator a.active,
 .paginator button.active {
-  background-color: #4CAF50;
+  background-color: #0072EA;
   color: white;
 }
 
 .paginator a:hover:not(.active),
 .paginator button:hover:not(.active) {
-  background-color: #ddd;
+  background-color: #DDDDDD;
 }
 
 .paginator button {
