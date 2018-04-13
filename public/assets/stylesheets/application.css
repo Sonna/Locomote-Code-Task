@@ -313,19 +313,19 @@ form input[type=submit]:hover {
 /* Add animation to "page content" */
 .animate-bottom {
   -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.1s;
   animation-name: animatebottom;
-  animation-duration: 0.5s;
+  animation-duration: 0.1s;
   position: relative;
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom: -100px; opacity: 0 }
+  from { bottom: -10px; opacity: 0 }
   to   { bottom:    0px; opacity: 1 }
 }
 
 @keyframes animatebottom {
-  from { bottom: -100px; opacity: 0 }
+  from { bottom: -10px; opacity: 0 }
   to   { bottom:      0; opacity: 1 }
 }
 
@@ -349,7 +349,15 @@ form input[type=submit]:hover {
 - [How To Make a Pagination]
   (https://www.w3schools.com/howto/howto_css_pagination.asp)
 */
-.paginator a {
+.paginator {
+  clear: both;
+  display: block;
+  float: left;
+  margin-top: 10px;
+}
+
+.paginator a,
+.paginator button {
   color: black;
   float: left;
   padding: 8px 16px;
@@ -357,11 +365,22 @@ form input[type=submit]:hover {
   transition: background-color .3s;
 }
 
-.paginator a.active {
+.paginator a.active,
+.paginator button.active {
   background-color: #4CAF50;
   color: white;
 }
 
-.paginator a:hover:not(.active) {
+.paginator a:hover:not(.active),
+.paginator button:hover:not(.active) {
   background-color: #ddd;
+}
+
+.paginator button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  /*font-size: 17px;*/
+  outline: none;
+  /*padding: 14px 16px;*/
 }
